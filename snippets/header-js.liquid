@@ -1,3 +1,9 @@
 <!-- Your update file include here -->
-<script src="{{ 'core.js' | asset_url }}"></script>
-<script src="{{ 'the-final-countdown.js' | asset_url }}"></script>
+
+{% if template contains 'cart' or template contains 'checkout' %}
+    <script src="{{ 'core.js' | asset_url }}"></script>
+    <script src="{{ 'the-final-countdown.js' | asset_url }}" async="async"></script>
+{% else %}
+    <script type="lazyload_int" data-src="{{ 'core.js' | asset_url }}"></script>
+    <script type="lazyload_int" data-src="{{ 'the-final-countdown.js' | asset_url }}"></script>
+{% endif %}

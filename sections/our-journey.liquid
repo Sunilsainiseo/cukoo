@@ -1,5 +1,5 @@
 {%- render 'section-style' -%}
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__our-journey-area pt-280 pb-350 mb-35 plr--9" id="section-{{ section.id }}" data-section="ourJourney">
+<div class="ltn__our-journey-area pt-280 pb-350 mb-35 plr--9" id="section-{{ section.id }}" data-section="ourJourney">
   <div class="container-fluid">
     <div class="row"> 
       <div class="col-lg-12">
@@ -58,9 +58,6 @@
 {% schema %}
   {
     "name": "Our Journey",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 	],
 	"blocks":[

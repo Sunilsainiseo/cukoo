@@ -10,16 +10,17 @@
 {%- if product.available -%}
 {%- assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" -%}
 {%- endif -%}
-<div class="ltn__product-item ltn__product-item-3 product-wrapper {{ variant.id }}">
+<div class="ltn__product-item ltn__product-item-3 {{ variant.id }}">
   <div class="product-img">
     {%- assign image = product.featured_image.src -%}
     <a href="{{ product.url | within: collection }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-      <img srcset="{% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
+      <img data-srcset="{% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
                    {% if image.width >= 243 %}{{ image | img_url: '266x' }} 266w,{% endif %}
                    {% if image.width >= 366 %}{{ image | img_url: '366x' }} 366w,{% endif %}
                    {% if image.width >= 576 %}{{ image | img_url: '576x' }} 576w,{% endif %}
                    {% if image.width >= 600 %}{{ image | img_url: '600x' }} 600w,{% endif %}"
-           src="{{ image | img_url: '600x' }}"
+           data-src="{{ image | img_url: '600x' }}"
+           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
            sizes="100vw"
            width="{{ image.width }}"
            height="{{ image.height }}"
@@ -38,13 +39,9 @@
     {%- assign count_down_final = count_down_first | split:'[countdown]' | last -%}
     <div class="product-grid-countdown" data-countdown="{{ count_down_final }}"></div> 
     {%- endif -%}
-
-    {%- if product.metafields.countdown.date == blank -%}
-    {%- render 'grid-color-swatch', product: product, variant: variant -%}
-    {%- endif -%}
   </div>
   <div class="product-info">
-    <h3 class="product-title popup_cart_title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+    <h2 class="product-title popup_cart_title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h2>
     {%- if settings.product_review_enable -%}
     <div class="product-ratting">
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>

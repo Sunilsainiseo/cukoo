@@ -1,5 +1,5 @@
 <!-- Video Area -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="video-banner" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="viedo_banner">
+<div class="video-banner" id="section-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="viedo_banner">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -85,9 +85,6 @@
 {% schema %}
   {
     "name": "Video Banner",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

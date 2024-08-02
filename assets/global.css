@@ -46,7 +46,16 @@ Dependency-free breakpoint mixin
 ==============================================================================*/
 *, input, :before, :after {
   box-sizing: border-box; }
-
+.ltn__banner-img a::after {
+  background: #00000042;
+  poa: ;
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: auto;
+  top: 0;
+  bottom: 0;
+}
 html, body {
   padding: 0;
   margin: 0; }
@@ -3003,3 +3012,6 @@ remaining accessible to screen readers (h5bp.com)
 
 .ajaxcart-item__price-strikethrough {
   float: right; }
+#ComparePrice {
+  display: block;
+}

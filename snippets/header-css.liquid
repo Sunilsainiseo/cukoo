@@ -1,44 +1,18 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
+<link href="{{ 'global.css' | asset_url }}" rel="stylesheet" />
+<link data-href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link data-href="{{ 'font-icons.css' | asset_url }}" rel="stylesheet" />
+<link href="{{ 'plugins.css' | asset_url }}" rel="stylesheet" />
 
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
-{% if theme_rtl %}
 <!-- Link your style.css and responsive.css files below -->
-{{ 'rtl-global.css' | asset_url | stylesheet_tag }}
-{{ 'font-icons.css' | asset_url | stylesheet_tag }}
-{{ 'rtl-bootstrap.min.css' | asset_url | stylesheet_tag }}
-{{ 'plugins.css' | asset_url | stylesheet_tag }}
-{{ 'aos.min.css' | asset_url | stylesheet_tag }}
-{{ 'rtl-style.css' | asset_url | stylesheet_tag }}
+<link href="{{ 'style.css' | asset_url }}" rel="stylesheet" />
 <!-- Make your theme CSS calls here -->
-{{ 'rtl-theme-custom.css' | asset_url | stylesheet_tag }}
-{{ 'theme-rtl.css' | asset_url | stylesheet_tag }}
-{% else %}
-<!-- Link your style.css and responsive.css files below -->
-{{ 'global.css' | asset_url | stylesheet_tag }}
-{{ 'font-icons.css' | asset_url | stylesheet_tag }}
-{{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
-{{ 'plugins.css' | asset_url | stylesheet_tag }}
-{{ 'aos.min.css' | asset_url | stylesheet_tag }}
-{{ 'style.css' | asset_url | stylesheet_tag }}
-<!-- Make your theme CSS calls here -->
-{{ 'theme-custom.css' | asset_url | stylesheet_tag }}
-{% endif %}
-
-{% if settings.dark_css_enable %}
-{{ 'dark.css' | asset_url | stylesheet_tag }}
-{% endif %}
+<link href="{{ 'theme-custom.css' | asset_url }}" rel="stylesheet" />
 <!-- Make all your dynamic CSS and Color calls here -->
-{{ 'skin-and-color.css' | asset_url | stylesheet_tag }}
+<link href="{{ 'skin-and-color.css' | asset_url }}" rel="stylesheet" />
+
+{%- if settings.mrn_custom_css != '' -%}
+  <style>
+  {{ settings.mrn_custom_css }}
+  </style>
+{%- endif -%}
+

@@ -1,7 +1,7 @@
 {%- render 'section-style' -%}
 
 <!-- SMALL PRODUCT LIST AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__small-product-list-area" id="section-{{ section.id }}" data-section="featuredCollectionList">
+<div class="ltn__small-product-list-area" id="section-{{ section.id }}" data-section="featuredCollectionList">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -95,9 +95,6 @@
 {% schema %}
   {
     "name": "Featured Collection List",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

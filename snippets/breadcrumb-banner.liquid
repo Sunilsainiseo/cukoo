@@ -10,9 +10,9 @@
             {%- endif -%}
             {%- if section.settings.breadcrub_page_title_enable -%}
             {%- if template == 'product' -%}
-            <h2 class="breadcrumbs-title section-title white-color">{{ template.name | capitalize }}</h2>
+            <h3 class="breadcrumbs-title section-title white-color">{{ template.name | capitalize }}</h1>
             {%- elsif template == 'article' -%}
-            <h2 class="breadcrumbs-title section-title white-color">{{ template.name | capitalize }}</h2>
+            <h2 class="breadcrumbs-title section-title white-color">{{ template.name | capitalize }}</h1>
             {%- elsif template == 'article.service' -%}
             <h1 class="breadcrumbs-title section-title white-color">{{ blog.title | capitalize }}</h1>
             {%- elsif template == 'search' -%}

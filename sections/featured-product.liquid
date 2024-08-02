@@ -1,6 +1,6 @@
 {%- render 'section-style' -%}
 <!-- PRODUCT SECTION START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="featured-product" id="section-{{ section.id }}" data-section="featuredProduct">
+<div class="featured-product" id="section-{{ section.id }}" data-section="featuredProduct">
   <div class="container">
     {%- assign product = all_products[section.settings.featured_product_handle] -%}
     {%- if product == empty -%}
@@ -88,9 +88,6 @@
 {% schema %}
   {
     "name": "Featured Product",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 			"type": "header",

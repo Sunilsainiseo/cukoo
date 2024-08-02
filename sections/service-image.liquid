@@ -1,19 +1,3 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- if section.settings.section_color_enable -%}
 <style>
   #section-{{ section.id }} .ltn__section-title-2 .section-subtitle.ltn__secondary-color {
@@ -31,7 +15,7 @@ endif
 {%- render 'section-style' -%}
 
 <!-- IMAGE SLIDER AREA START (img-slider-3) -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__img-slider-area ltn__img-slider-2 {% if section.settings.large_width_enable %}plr--9{% endif %}" id="section-{{ section.id }}" data-section="serviceImage">
+<div class="ltn__img-slider-area ltn__img-slider-2 {% if section.settings.large_width_enable %}plr--9{% endif %}" id="section-{{ section.id }}" data-section="serviceImage">
   <div class="{% if section.settings.large_width_enable %}container-fluid{% else %}container{% endif %}">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -54,7 +38,7 @@ endif
                 ]
         }'
         {%- endcapture -%}
-    <div class="row ltn__image-slider-2-active slick-arrow-1 slick-arrow-1-inner" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+    <div class="row ltn__image-slider-2-active slick-arrow-1 slick-arrow-1-inner" {{ data_slick_activation }}>
       {%- for block in section.blocks -%}
       {%- case block.type -%}
       {%- when 'service' -%}
@@ -63,7 +47,7 @@ endif
           {%- if block.settings.service_image -%}          
           {%- assign image = block.settings.service_image -%}
           <a href="{{ image | img_url: '1024x' }}" data-rel="lightcase:section-{{ section.id }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-            <img srcset="{% if image.width >= 115 %}{{ image | img_url: '115x' }} 115w,{% endif %}
+            <img data-srcset="{% if image.width >= 115 %}{{ image | img_url: '115x' }} 115w,{% endif %}
                          {% if image.width >= 288 %}{{ image | img_url: '288x' }} 288w,{% endif %}
                          {% if image.width >= 385 %}{{ image | img_url: '385x' }} 385w,{% endif %}
                          {% if image.width >= 350 %}{{ image | img_url: '393x' }} 393w,{% endif %}
@@ -71,7 +55,8 @@ endif
                          {% if image.width >= 800 %}{{ image | img_url: '800x' }} 800w,{% endif %}"
                          {% if image.width >= 850 %}{{ image | img_url: '850x' }} 850w,{% endif %}"
                  loading="lazy"
-                 src="{{ image | img_url: '800x' }}"
+                 data-src="{{ image | img_url: '800x' }}"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
                  sizes="100vw"
                  width="{{ image.width }}"
                  height="{{ image.height }}"
@@ -81,7 +66,7 @@ endif
           </a>
           {%- else -%}
           <a href="https://via.placeholder.com/800x550" data-rel="lightcase:section-{{ section.id }}">
-            <img src="https://via.placeholder.com/800x550" alt="Image">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="https://via.placeholder.com/800x550" alt="Image">
           </a>
           {%- endif -%}
         </div>
@@ -96,9 +81,6 @@ endif
 {% schema %}
   {
     "name": "Service Image (Portfolio)",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
           "type": "checkbox",

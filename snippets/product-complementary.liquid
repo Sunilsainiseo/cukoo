@@ -1,33 +1,11 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
 <div
   class="product-complementary" {{ block.shopify_attributes }}
   data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=complementary"
 >
-  {%- capture data_slick_activation -%}
-              data-slick='{
-                  {% if theme_rtl %}
-                  "rtl": true
-                  {% endif %}
-              }'
-              {%- endcapture -%}
   {%- if recommendations.performed? and recommendations.products_count > 0 -%}
     <hr>
       <h6>Pairs well with</h6>
-      <div class="row product-complementary__carousel slick-arrow-1" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+      <div class="row product-complementary__carousel slick-arrow-1">
         {%- for product in recommendations.products -%}
           {%- assign on_sale = false -%}
           {%- if product.compare_at_price > product.price -%}
@@ -65,16 +43,7 @@ endif
                     {%- unless product.description contains '[affiliate_link]' -%}
                     <li>
                       {%- if product.available -%}
-                      {%- if settings.product_cart_type == 'ajax_cart_drawer' -%}
-                      <a href="javascript:void(0);" onclick="{{ func }}; return false;" class="ajax-spin-cart ajax-spin-cart-drawer" title="{{ settings.cart_button_title }}">
-                        <span>
-                          <span class="cart-title"><i class="fas fa-shopping-cart"></i></span>
-                          <span class="cart-loading"><i class="fas fa-spinner fa-pulse"></i></span>
-                          <span class="cart-added"><i class="fas fa-check"></i></span>
-                          <span class="cart-unavailable"><i class="fas fa-exclamation-triangle"></i></span>
-                        </span>
-                      </a>
-                      {%- elsif settings.product_cart_type == 'ajax_spin_cart' -%}
+                      {%- if settings.product_cart_type == 'ajax_spin_cart' -%}
                       <a href="javascript:void(0);" onclick="{{ func }}; return false;" class="ajax-spin-cart" title="{{ settings.cart_button_title }}">
                         <span>
                           <span class="cart-title"><i class="fas fa-shopping-cart"></i></span>
@@ -147,3 +116,60 @@ endif
   {%- endif -%}
 </div>
 
+<script type="lazyload_int">
+  const handleIntersection = (entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+
+    observer.unobserve(productRecommendationsSection);
+
+    const url = productRecommendationsSection.dataset.url;
+
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+        const recommendations = html.querySelector('.product-complementary');
+
+        if (recommendations && recommendations.innerHTML.trim().length) {
+          productRecommendationsSection.innerHTML = recommendations.innerHTML;
+          $('.product-complementary__carousel').slick({
+        		speed: 1000,
+        		autoplay: false,
+        		slidesToShow: 3,
+        		adaptiveHeight: true,
+        		prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
+                nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
+        		responsive: [{
+        			breakpoint: 992,
+        			settings: {
+        				slidesToShow: 3
+        			}
+        		},
+        		{
+        			breakpoint: 768,
+        			settings: {
+        				slidesToShow: 2,
+        				arrows: true
+        			}
+        		},
+        		{
+        			breakpoint: 480,
+        			settings: {
+        				slidesToShow: 2,
+        				arrows: true
+        			}
+        		}]
+        	});
+        }
+      })
+      .catch(e => {
+        console.error(e);
+      });
+  };
+
+  const productRecommendationsSection = document.querySelector('.product-complementary');
+  const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
+
+  observer.observe(productRecommendationsSection);
+</script>

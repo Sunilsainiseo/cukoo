@@ -82,20 +82,11 @@
 </div>
 <!-- MODAL AREA END -->
 
-<script defer>
+<script>
   /* --------------------------------------------------------
             Newsletter Popup
         -------------------------------------------------------- */
-{%- if settings.one_day_popup_enable -%}
-  setTimeout(function() {
-      if (!$.cookie('pop')) {
-          $('#ltn__newsletter_popup').modal('show');
-          $.cookie('pop', '1');
-      }
-  }, 10000);
-  {%- else -%}
   setTimeout(function() {
     $('#ltn__newsletter_popup').modal('show');
   }, 10000);
-  {%- endif -%}
 </script>

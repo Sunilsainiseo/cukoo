@@ -22,32 +22,14 @@
                     {% if section.settings.cart_vendor_enable %}
                     <p>{{ item.vendor }}</p>
                     {% endif %}
-
-                    {%- for property in item.properties -%}
-                      {%- assign property_first_char = property.first | slice: 0 -%}
-                      {%- if property.last != blank and property_first_char != '_' -%}
-                        <div class="product-option">
-                          <dt>{{ property.first }}:</dt>
-                          <dd>
-                            {%- if property.last contains '/uploads/' -%}
-                              <a href="{{ property.last }}" class="link" target="_blank">
-                                {{ property.last | split: '/' | last }}
-                              </a>
-                            {%- else -%}
-                              {{ property.last }}
-                            {%- endif -%}
-                          </dd>
-                        </div>
-                      {%- endif -%}
-                    {%- endfor -%}
                   </td>
-                  <td class="pro-price"><span class="amount">{{ item.original_price | money }}</span></td>
+                  <td class="pro-price"><span class="amount">{{ item.price | money }}</span></td>
                   <td class="pro-quantity cart-product-quantity">
                     <div class="product-quantity cart-plus-minus quantity">
                       <input class="cart-plus-minus-box" type="text" value="{{ item.quantity }}" name="updates[]" />
                     </div>
                   </td>
-                  <td class="pro-subtotal">{{ item.original_line_price | money }}</td>
+                  <td class="pro-subtotal">{{ item.line_price | money }}</td>
                   <td class="pro-remove"><a href="/cart/change?line={{ forloop.index }}&amp;quantity=0">×</a></td>
                 </tr>
                 {% endfor %}
@@ -104,7 +86,9 @@
                   </p>
                   {%- endif -%}
                   <div class="proceed-to-checkout">
-                    <button type="submit" class="theme-default-button" name="checkout">{{ section.settings.checkout_button_title }}</button>
+                     {% render 'gokwik-checkout' %}
+                    <button type="submit" class="theme-default-button shopifycheckoutbtn" name="checkout">{{ section.settings.checkout_button_title }}</button>
+                 
                   </div>
                 </div>
               </div>
@@ -128,7 +112,7 @@
 </div>
 <!-- PAGE SECTION END -->
 
-<script>
+<script type="lazyload_int">
   setTimeout(function() {
     $('.product-quantity .qtybutton').click(function() {
       $('form[name="cart-ajax-update"]').submit();

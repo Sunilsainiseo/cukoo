@@ -1,4 +1,4 @@
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__contact-address-area" id="section-{{ section.id }}" data-section="contactInfo2">
+<div class="ltn__contact-address-area" id="section-{{ section.id }}" data-section="contactInfo2">
   <div class="container">
     <div class="row">
       {%- for block in section.blocks -%}
@@ -43,9 +43,6 @@
 {% schema %}
   {
     "name": "Contact Info",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 	],
 	"blocks":[

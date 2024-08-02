@@ -1,5 +1,3 @@
-
-
 $(document).on('shopify:section:load', function(e){ 
   $('#' + e.target.id).find('[data-section]').sectionJs();
 }).ready(function() {
@@ -84,12 +82,12 @@ $.fn.sectionJs = function(){
     $this.find('.ltn__small-product-slider-active').featuredCollectionList2();
   }else if($this.data('section') == "categoryList2") {
     $this.find('.ltn__category-slider-active').categoryList2();
+  }else if($this.data('section') == "RecentlyViewedProduct") {
+    $this.RecentlyViewedProduct();
   }else if($this.data('section') == "categoryList3") {
     $this.find('.ltn__category-slider-active').categoryList3();
   }else if($this.data('section') == "collectionTemplate") {
     $this.collectionTemplate();
-  }else if($this.data('section') == "slideshowThreeActivation") {
-    $this.find('.ltn__slide-one-active').slideshowThreeActivation();
   }else{}   
 }
 
@@ -293,10 +291,8 @@ $.fn.SlideshowActivation = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -320,10 +316,8 @@ $.fn.tabWithProduct = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -358,10 +352,8 @@ $.fn.featuredCollection = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
-    nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
+    nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
   });
 };
 
@@ -377,10 +369,8 @@ $.fn.testimonialTab = function() {
     speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 992,
@@ -476,10 +466,8 @@ $.fn.brandLogo = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -492,10 +480,8 @@ $.fn.latestBlog = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
   // 7. Background Image
   var $backgroundImage = $('.bg-image');
@@ -537,10 +523,8 @@ $.fn.sliderWithPopupVideo = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -608,10 +592,8 @@ $.fn.serviceBlog = function() {
     centerMode: true,
     centerPadding: '0px',
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
   
   /* --------------------------------------------------------
@@ -634,10 +616,8 @@ $.fn.tabWithProduct2 = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -654,10 +634,8 @@ $.fn.serviceImage = function() {
     centerMode: true,
     centerPadding: '80px',
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
   
   /* --------------------------------------------------------
@@ -683,10 +661,8 @@ $.fn.serviceBlogTwo = function() {
     centerMode: true,
     centerPadding: '0px',
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
   
   /* --------------------------------------------------------
@@ -730,10 +706,8 @@ $.fn.testimonialSlider = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -749,10 +723,8 @@ $.fn.slideshowTwoActivation = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -786,10 +758,8 @@ $.fn.testimonialSliderThree = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -816,10 +786,8 @@ $.fn.latestBlog2 = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -835,10 +803,8 @@ $.fn.popupVideoBanner2 = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -893,10 +859,8 @@ $.fn.searchInventory3 = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -932,8 +896,7 @@ $.fn.productTemplate = function() {
     asNavFor: '.ltn__shop-details-small-img',
     draggable: false,
     swipeToSlide: false,
-    touchMove: false,
-    
+    touchMove: false
   });
   $('.ltn__shop-details-small-img').slick({
     slidesToShow: 4,
@@ -942,10 +905,8 @@ $.fn.productTemplate = function() {
     dots: false,
     arrows: true,
     focusOnSelect: true,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 992,
@@ -1106,10 +1067,8 @@ $.fn.heroBanner2 = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -1144,10 +1103,8 @@ $.fn.slideshowCategoryMenu = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -1223,10 +1180,8 @@ $.fn.featuredCollectionList2 = function() {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>',
-    
     responsive: [
       {
         breakpoint: 1200,
@@ -1276,14 +1231,37 @@ $.fn.categoryList2 = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
+// Category Slider 2
+$.fn.RecentlyViewedProduct = function() {
+  /* this code for currency support */
+  window.show_multiple_currencies = false;
+  window.shop_currency = "";
+  window.money_format = "";
+  
+  /* recently viewed plugin api start */
+  Shopify.Products.showRecentlyViewed({
+    howManyToShow:4,
+    howManyToStoreInMemory:10,
+    wrapperId: 'recently-viewed-products', 
+    templateId: 'recently-viewed-product-template', 
+    onComplete: function() {
 
+    if (window.currency_enable) {
+    /* this section ID to be your currency picker (Select) ID */
+      Currency.convertAll(window.shop_currency, jQuery('#currencies').val(), 'span.money', 'money_format');
+  }
+                                      }
+
+                                      });
+  /* recently viewed plugin api end */
+
+	Shopify.Products.recordRecentlyViewed();
+};
 
 // Category Slider 3
 $.fn.categoryList3 = function() {
@@ -1294,10 +1272,8 @@ $.fn.categoryList3 = function() {
     infinite: true,
     speed: 300,
     slidesToScroll: 1,
-    
     prevArrow: '<a class="slick-prev"><i class="fas fa-arrow-left" alt="Arrow Icon"></i></a>',
     nextArrow: '<a class="slick-next"><i class="fas fa-arrow-right" alt="Arrow Icon"></i></a>'
-    
   });
 };
 
@@ -1318,52 +1294,6 @@ $.fn.collectionTemplate = function() {
     setTimeout(function() {
       $('form[name="storefrontfilter"]').submit();
     }, 500);
-  });
-
-  // Filter Drawer
-  $('.collection-filter-drawer-title').on('click', function() {
-      $('.ltn__utilize-cart-menu').addClass('ltn__utilize-open');
-      $('body').addClass('ltn__utilize-open');
-      $('.ltn__utilize-overlay').fadeIn();
-  });
-};
-
-
-// 15. Slider One Active
-$.fn.slideshowThreeActivation = function() {
-  var $slideshowThreeActivation_slider = this;
-  $slideshowThreeActivation_slider.slick({
-    arrows: true,
-    autoplaySpeed: 5000,
-    dots: true,
-    fade: true,
-    cssEase: 'linear',
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    
-    prevArrow: '<a class="slick-prev"><i class="fas fa-chevron-left"></i></a>',
-    nextArrow: '<a class="slick-next"><i class="fas fa-chevron-right"></i></a>',
-    
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          arrows: true,
-          dots: true,
-        }
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          arrows: true,
-          dots: true,
-        }
-      }
-    ]
-  }).on('afterChange', function(){
-    new WOW().init();
   });
 };
 
@@ -1438,49 +1368,17 @@ $.fn.slideshowThreeActivation = function() {
         });
       });
 
-    /* ----------------------------
-            AOS Scroll Animation 
-        -------------------------------*/
-        AOS.init({
-            offset: 10,
-            duration: 1000,
-            once: true,
-            easing: 'ease',
-        });
-
-      // Product grid color variant activation code. 
-    $('.product-color li.grid-swatch-selector label').click(function(){
-      $('li.grid-swatch-selector label').removeClass("active");
-      jQuery(this).addClass('active');
-      var variantURL = jQuery(this).parent().find('.product-url a').attr('href');
-      
-      var variantImage = jQuery(this).parent().find('.hidden a').attr('href');
-      jQuery(this).parents('.product-wrapper').find('.popup_cart_image').attr({ src: variantImage, srcset: variantImage }); 
-
-      jQuery(this).parents('.product-wrapper').find('.product-title a').attr({ href: variantURL });
-      jQuery(this).parents('.product-wrapper').find('.product-img > a').attr({ href: variantURL });
-      return false;
-    });
-  
-      // Cart Drawer
-      $('.ajax-spin-cart-drawer').on('click', function() {
-        setTimeout(function () {
-          $('#ltn__utilize-cart-menu').addClass('ltn__utilize-open');
-          $('body').addClass('ltn__utilize-open');
-          $('.ltn__utilize-overlay').fadeIn();
-        },1000);
-      });
-
   });
 
-  
-/*-----------------
+
+  $(window).on('load',function(){
+    /*-----------------
             preloader
         ------------------*/
-  $(window).on('load',function(){
     if($('#preloader').length){
       var preLoder = $("#preloader");
       preLoder.fadeOut(1000);
+
     };
   });
 

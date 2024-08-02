@@ -1,33 +1,8 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- if section.settings.section_category_color_enable -%}
 <style>
   #section-{{ section.id }} .ltn__category-menu-title h2 {
     background: {{ section.settings.category_bg_color }};
     color: {{ section.settings.category_color }};
-  }
-  .ltn__category-menu-toggle {
-      background-color: {{ section.settings.category_menu_bg_color }};
-  }
-  .ltn__category-menu-toggle > ul {
-      border-color: {{ section.settings.category_menu_border_color }};
-  }
-  .ltn__category-menu-toggle>ul>li>a {
-      border-bottom: 1px dashed {{ section.settings.category_menu_item_border_color }};
   }
 </style>
 {%- endif -%}
@@ -212,7 +187,7 @@ endif
           {%- endif -%}
         }'
         {%- endcapture -%}
-        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+        <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1" {{ data_slick_activation }}>
           {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when 'slide' -%}
@@ -288,9 +263,6 @@ endif
 {% schema %}
   {
     "name": "Slideshow + Category Menu",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
           "type": "checkbox",
@@ -385,32 +357,14 @@ endif
         {
           "type": "color",
           "id": "category_bg_color",
-          "label": "Category Title BG Color",
+          "label": "Category BG Color",
           "default": "#f2f6f7"
         },
         {
           "type": "color",
           "id": "category_color",
-          "label": "Category Title Color",
+          "label": "Category Color",
           "default": "#071c1f"
-        },
-        {
-          "type": "color",
-          "id": "category_menu_bg_color",
-          "label": "Category Menu BG Color",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "category_menu_border_color",
-          "label": "Category Menu Border Color",
-          "default": "#a6a6a6"
-        },
-        {
-          "type": "color",
-          "id": "category_menu_item_border_color",
-          "label": "Category Menu Item Border Color",
-          "default": "#a6a6a6"
         },
         {
           "type": "checkbox",

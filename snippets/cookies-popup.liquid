@@ -1,0 +1,100 @@
+<style>   
+    body.popup-open {
+        overflow: hidden;
+        position: relative;
+    }
+    body.popup-open:after {
+        position: absolute;
+        content: '';
+        top: 0;
+        left: 0;
+        background-color: #00000030;
+        width: 100%;
+        height: 100%;
+        z-index: 999 !important;
+    }
+    .cookiePopup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+        display: none;
+    }    
+    @media (max-width: 767px) {
+        div#cookiePopup {
+            top: 30% !important;
+            left: unset !important;
+            transform: none !important;
+            margin-left: 25px;
+            margin-right: 25px;            
+        }
+    }
+    .cookiePopup-img {
+        max-width: 100%;
+        height: auto;
+    }    
+    .cookiePopup .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+    .cookiePopup .close-btn span {
+        display: flex;
+        font-size: 30px;
+        background: #fff;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 !important;
+        line-height: normal;
+        font-weight: 500;
+    }
+</style>
+<div class="cookiePopup" id="cookiePopup">
+    <img loading="lazy"
+         src="{{ 'banner_popup.png' | asset_url }}"
+         sizes="100vw"
+         width="{{ image.width }}"
+         height="{{ image.height }}"
+         alt="{{ image.alt | escape }}"
+         class="cookiePopup-img"
+    >
+    <button class="close-btn" onclick="acceptCookies()"><span aria-hidden="true">&times;</span></button>
+</div>
+<script>  
+    function checkCookies() {
+        return document.cookie.includes('acceptedCookies=true');
+    }    
+    function showPopup() {
+        var popup = document.getElementById('cookiePopup');
+        popup.style.display = 'block';
+        document.body.classList.add('popup-open');
+    }
+    function acceptCookies() {
+        document.cookie = 'acceptedCookies=true; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/';
+        var popup = document.getElementById('cookiePopup');
+        popup.style.display = 'none';
+        document.body.classList.remove('popup-open');
+    }
+    function closePopupOnClickOutside(event) {
+        var popup = document.getElementById('cookiePopup');
+        if (!popup.contains(event.target)) {
+            popup.style.display = 'none';
+            document.body.classList.remove('popup-open');
+             acceptCookies();
+            document.removeEventListener('click', closePopupOnClickOutside);
+        }
+    }
+    if (!checkCookies()) {        
+        showPopup();
+        document.addEventListener('click', closePopupOnClickOutside);
+    }
+</script>

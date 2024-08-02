@@ -1,22 +1,6 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- render 'section-style' -%}
 
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="animate-content" id="section-{{ section.id }}">
+<div class="animate-content" id="section-{{ section.id }}">
   <div class="container">
     <div class="marquee__wrap">
       {% for block in section.blocks %}
@@ -31,68 +15,6 @@ endif
       {% endfor %}
     </div>
 
-    {% if theme_rtl %}
-    <style>
-    .marquee__wrap {
-         display: flex;
-         width: fit-content;
-         white-space: nowrap;
-         position: relative;
-         will-change: transform;
-         animation: marquee {{ section.settings.animation_speed }}s linear 0s infinite normal;
-         animation-play-state: running;
-       }
-      .marquee__wrap:hover {
-            animation-play-state: paused;
-        }
-       .marquee__wrap .marquee__single {
-         display: block;
-         width: 100%;
-         min-width: max-content;
-         padding-inline: 20px;
-       }
-       .marquee__wrap .marquee__single p {
-         font-size:30px;
-         line-height:1;
-         margin-bottom: 0;
-       }
-      .marquee__wrap .marquee__single p a, .marquee__wrap .marquee__single p{
-         color: var(--ltn__paragraph-color);
-       }
-      .marquee__wrap .marquee__single p a:hover{
-         color: {{ settings.color_secondary }};
-       }
-      .animate-content{
-        overflow-x: hidden;
-      }
-      @media (max-width: 1366px){
-         .marquee__wrap .marquee__single p {
-           font-size: 30px;
-         }
-       }
-
-      @media (max-width: 991px){
-         .marquee__wrap .marquee__single p {
-           font-size: 30px;
-         }
-       }
-      @media (max-width: 575px){
-         .marquee__wrap .marquee__single p {
-           font-size: 30px;
-         }
-       }
-
-       @keyframes marquee {
-         0% {
-           transform: translateX(0);
-         }
-
-         100% {
-           transform: translateX(50%);
-         }
-       }
-    </style>
-    {% else %}
     <style>
        .marquee__wrap {
          display: flex;
@@ -118,7 +40,7 @@ endif
          margin-bottom: 0;
        }
       .marquee__wrap .marquee__single p a, .marquee__wrap .marquee__single p{
-         color: var(--ltn__paragraph-color);
+         color: #222;
        }
       .marquee__wrap .marquee__single p a:hover{
          color: {{ settings.color_secondary }};
@@ -153,7 +75,6 @@ endif
          }
        }
     </style>
-    {% endif %}
   </div>
 </div>
 
@@ -164,9 +85,6 @@ endif
 {% schema %}
  {
    "name": "Scrolling Text",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
    "settings": [
         {
           "type": "text",

@@ -1,19 +1,3 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- if section.settings.section_color_enable -%}
 <style>
   #section-{{ section.id }} .slick-dots li {
@@ -101,7 +85,7 @@ endif
     {%- endif -%}
   }'
   {%- endcapture -%}
-  <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+  <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1 arrow-white" {{ data_slick_activation }}>
 	{%- for block in section.blocks -%}
     {%- case block.type -%}
     {%- when 'slide' -%}
@@ -179,9 +163,6 @@ endif
 {% schema %}
   {
     "name": "Slideshow (2)",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 			"type": "header",

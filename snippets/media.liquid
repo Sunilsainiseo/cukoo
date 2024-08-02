@@ -6,7 +6,9 @@
     <a {% if section.settings.product_popup_enable %}data-fancybox="gallery" class="fancybox-gallery"{% endif %} href="{{ media | img_url: '1024x1024' }}">
     <img class="product_variant_image {{ featured_media.id }}" 
          data-media-id="{{ media.id }}" data-zoom-image="{{ media | img_url: '1024x1024' }}" data-image="{{ media | img_url: '1024x1024' }}"
-         src="{{ media | img_url: '1024x1024' }}" loading="lazy">
+         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
+         data-src="{{ media | img_url: '1024x' }}"
+         data-mob-src="{{ media | img_url: '480x' }}" loading="lazy" alt="{{ media | remove: '.jpg' | remove: '.png' | remove: 'files/' }}">
     </a>
   </div>
   {%- render 'product-badge' with product as product, on_sale: on_sale, sold_out: sold_out -%}

@@ -92,19 +92,19 @@
         </div>
       </div>
       {%- else -%}
-      <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_column_md }} col-{{ section.settings.product_column_xs }}">
+      <div class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_column_md }} col-{{ section.settings.product_column_xs }}">
         <div class="ltn__category-item text-center">
           <div class="ltn__category-item-img">
             {%- assign image = collection.featured_image -%}
             <a href="{{ collection.url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-              <img srcset="{% if image.width >= 90 %}{{ image | img_url: '90x' }} 90w,{% endif %}
+              <img data-srcset="{% if image.width >= 90 %}{{ image | img_url: '90x' }} 90w,{% endif %}
                            {% if image.width >= 118 %}{{ image | img_url: '118x' }} 118w,{% endif %}
                            {% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
                            {% if image.width >= 243 %}{{ image | img_url: '266x' }} 266w,{% endif %}
                            {% if image.width >= 366 %}{{ image | img_url: '366x' }} 366w,{% endif %}
                            {% if image.width >= 576 %}{{ image | img_url: '576x' }} 576w,{% endif %}
                            {% if image.width >= 600 %}{{ image | img_url: '600x' }} 600w,{% endif %}"
-                   src="{{ image | img_url: '118x' }}"
+                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ image | img_url: '118x' }}"
                    sizes="100vw"
                    width="{{ image.width }}"
                    height="{{ image.height }}"
@@ -413,9 +413,3 @@
 	]
   }
 {% endschema %}
-
-{% stylesheet %}
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}

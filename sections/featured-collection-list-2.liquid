@@ -1,7 +1,7 @@
 {%- render 'section-style' -%}
 
 <!-- SMALL PRODUCT LIST AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__small-product-list-area" id="section-{{ section.id }}" data-section="featuredCollectionList2">
+<div class="ltn__small-product-list-area" id="section-{{ section.id }}" data-section="featuredCollectionList2">
   <div class="container">
     <div class="row justify-content-center">
       {%- for block in section.blocks -%}
@@ -113,9 +113,6 @@
 {% schema %}
   {
     "name": "Multiple Collection List",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 			"type": "header",

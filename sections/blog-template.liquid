@@ -6,7 +6,7 @@
       <div class="{% if section.settings.sidebar_handle == 'without_sidebar' %}col-lg-12{% else %}col-lg-9{% endif %}">
         <div class="row">
           {% for article in blog.articles %}
-          <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="col-lg-{{ section.settings.blog_column }} col-md-6 col-12">
+          <div class="col-lg-{{ section.settings.blog_column }} col-md-6 col-12">
             <div class="ltn__blog-item ltn__blog-item-3">
               {%- if article.image -%}
               {%- assign image =  article.image -%}

@@ -1,5 +1,5 @@
 <!-- Shop Tab Start -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2 pb-85">
+<div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2 pb-85">
   <div class="container">
     <div class="ltn__shop-details-tab-menu">
       <div class="nav">
@@ -71,14 +71,11 @@
       {% if section.settings.product_review_tab_enable %}
       <div class="tab-pane fade{% if section.settings.tab_active_handle == 'review_tab' %} show active{% endif %}" id="liton_tab_details_1_2" role="tabpanel">
         <div class="ltn__shop-details-tab-content-inner">
-          {%- for block in section.blocks -%}
-            <div>
-              {%- case block.type -%}
-              {%- when '@app' -%}
-              {%- render block -%}
-              {% endcase %}
-            </div>
-          {% endfor %}
+          {% if section.settings.review_handle == 'shopify_review' %}
+          <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+          {% elsif section.settings.review_handle == 'ali_review' %}
+          <div style="clear: both;"><div id="shopify-ali-review" product-id="{{ product.id }}"> {{ shop.metafields.review_collector.review_code }} </div></div>
+          {% endif %}
         </div>
       </div>
       {% endif %}  
@@ -117,7 +114,7 @@
       {%- when 'custom_tab' -%}
       <div {{ block.shopify_attributes }} class="tab-pane fade" id="{{ pages[block.settings.custom_tab_handle].title | handle }}-{{ block.id }}" role="tabpanel">
         <div class="ltn__shop-details-tab-content-inner">
-          {{ pages[block.settings.custom_tab_handle].content }}
+          {{ pages[block.settings.custom_tab_handle].content | replace: ' src="' , ' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="' | replace: ' srcset="' , ' data-srcset="' }}
         </div>
       </div>
 
@@ -226,11 +223,7 @@
             "id": "product_review_tab_title",
             "label": "Title",
             "default": "Reviews"
-        },				
-		{
-            "type": "paragraph",
-            "content": "Click the 'Add block' and add the review app."
-        },
+        },	
 		{
             "type": "radio",
             "id": "review_handle",
@@ -306,9 +299,6 @@
         }  
 	],
 	"blocks": [
-      {
-        "type": "@app"
-      },
       {
           "name": "Custom Tab",
           "type": "custom_tab",

@@ -34,7 +34,7 @@
       {{ settings.sale_title }}
       {%- endif -%}
       {%- if settings.sale_percent_enable -%}
-      -{{ product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round }}%
+      -{{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100.0 | divided_by: product.selected_or_first_available_variant.compare_at_price | money_without_currency | replace: ',', '.' | times: 100 | remove: '.0'}}%
       {%- endif -%}
     </li>
     {%- endif -%}

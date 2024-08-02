@@ -199,17 +199,6 @@
               {%- endif -%}
             </ul>
           </div>
-          {%- if block.settings.payment_option_enable -%}
-          <div class="ltn__safe-checkout mt-20">
-            {%- if block.settings.payment_information != '' -%}
-            <h5>{{ block.settings.payment_information }}</h5>
-            {%- endif -%}
-            {%- if block.settings.payment_image -%}
-            <img src="{{ block.settings.payment_image | img_url: '1024x1024' }}" alt="{{ block.settings.payment_image.alt }}" loading="lazy">
-            {%- endif -%}
-            {%- render 'payment-icon', block: block -%}
-          </div>
-          {%- endif -%}
           {%- if block.settings.social_media_enable -%}
           <div class="ltn__social-media mt-20">
             <ul>
@@ -332,13 +321,6 @@
         </div>
         </div>
       </div>
-      {%- if block.settings.block_color_enable -%}
-      <style>
-        .footer-newsletter input[type=email]{
-          background-color: {{ block.settings.newsletter_input_bg_color }}
-        }
-      </style>
-      {%- endif -%}
       {%- when 'blank_column' -%}
       <div {{ block.shopify_attributes }} class="d-none d-lg-block col-lg-{{ block.settings.widget_column }}">
         

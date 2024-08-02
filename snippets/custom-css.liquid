@@ -1,0 +1,273 @@
+<style>
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.swatch.Color  {
+    opacity: 0 !important;
+}
+
+.template-product .swatch .swatch-element>label:hover,
+.template-product  .swatch .swatch-element input:checked+label {
+    color: #fff;
+    background-color: #292929;
+    border-color: #292929;
+    text-decoration-color: #fff;
+}
+
+.template-product  .swatch .swatch-element>label{
+    padding:9px 10px;
+    
+}
+
+.template-product .swatch  .header {
+    display: block !important;
+    width: 100%;
+    font-weight: 400;
+}
+
+.jdgm-preview-badge .jdgm-star {
+    color: #c01444;
+}
+
+@media(min-width:1200px){
+.template-product .ltn__product-details-menu-1:has(.swatch) {
+    aspect-ratio: 545/112;
+}
+.template-product .swatch-element.soldout label:before,
+.swatch-element.soldout label:after {
+    top: 0;
+    background: #323232;
+}
+
+.template-product  .swatch-element.soldout label:before {
+    opacity: 0;
+}
+
+.template-product .swatch .swatch-element>label {
+    line-height: 16.6px;
+}
+
+
+  
+  
+.template-index  .ltn__feature-area  .ltn__feature-item-box-wrap.ltn__feature-item-box-wrap-2.ltn__border.section-bg-6 > .ltn__feature-item.ltn__feature-item-8 {
+    width: 37%;
+}
+
+.template-product .ltn__shop-details-img-gallery .ltn__shop-details-large-img:not(.slick-initialized) .single-large-img:nth-child(n+2) {
+    display: none;
+}
+
+.template-product  .ltn__shop-details-img-gallery  .ltn__shop-details-small-img:not(.slick-initialized) .single-small-img:nth-child(n+5) {
+    display: none;
+}
+
+.template-product .ltn__shop-details-img-gallery  .ltn__shop-details-small-img:not(.slick-initialized) {
+    display: flex;
+}
+
+.template-product .ltn__shop-details-large-img:not(.slick-initialized) {
+    aspect-ratio: 570/759;
+}
+
+html:not(.w3_start ) .template-product .site-logo img {
+    height: 99px;
+}  
+}
+
+@media(max-width:767px){
+.template-product .ltn__shop-details-img-gallery .ltn__shop-details-large-img:not(.slick-initialized) .single-large-img:nth-child(n+2) {
+    display: none;
+}
+
+.template-product  .ltn__shop-details-img-gallery  .ltn__shop-details-small-img:not(.slick-initialized) .single-small-img:nth-child(n+4) {
+    display: none;
+}
+
+.template-product .ltn__shop-details-img-gallery  .ltn__shop-details-small-img:not(.slick-initialized) {
+    display: flex;
+}
+
+html:not(.w3_start) .template-product .ltn__shop-details-img-gallery {
+    aspect-ratio: 345/633;
+}
+
+html:not(.w3_start) .template-product  .logo img {
+    height: 49px;
+}
+
+.template-product .ltn__shop-details-large-img:not(.slick-initialized) {
+    aspect-ratio: 345/459;
+}
+
+.template-product .ltn__shop-details-small-img:not(.slick-initialized) {
+    aspect-ratio: 355/154;
+}  
+}
+
+@font-face {
+font-family: 'icomoon';
+src: url('data:application/octet-stream;base64,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') format('woff2');
+font-weight: normal;
+font-style: normal;
+font-display:swap;	
+}
+
+.icon-mail:before {
+    content: "\e90b";
+}
+
+.icon-placeholder:before {
+    content: "\e90c";
+}
+
+.icon-cancel:before {
+    content: "\e900";
+}
+
+.icon-call:before {
+    content: "\e90d";
+}
+
+.icon-search:before {
+    content: "\e93b";
+}
+
+.icon-user:before {
+    content: "\e93f";
+}
+
+.icon-shopping-cart:before {
+    content: "\e933";
+}
+
+[class^=icon-], [class*=" icon-"] {
+    font-family: icomoon!important;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+font-family: 'Font Awesome 5 Brands';
+src: url('data:application/octet-stream;base64,d09GMgABAAAAAAMsAA0AAAAAB3wAAALWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GVgCCUhEICoJggkcLDAABNgIkAxQEIAWEcAdBG28GQI7RY0ceMq48WbmWlYx4nlor3++Z3gNUQI4cchSBwvIoPFqUOWFTZ1PxYCNcWFjU+5Pd25tAnNDY/NCVoFJ0f3B7O//X1MvnJ3AtdkrXlJSx0oF9XJTZgD7o0bDxQCc21UbZm04fOwLRsdQ2gwWro1EnBL54df6EX2dzmI+NMIgxoIhGK1oUJKdpUPXmcu4C5wD636QSitpgOqMA+uP6XZtoMP+d9Kcvm+SmpWzCGSCABg1mIHAZtWAGjRWgV68Cbex0yXqX4ZNBAgIgHYZJCkqQnp6Qy6RLKqCCfnTwDK8BLQCiTjBAH2d0opj0pz8DefbuhLn6PS8vMD1/Cwa+Vt8V3FbdF95VbxSuV60WPBS0VLUVtlf7dBYIDNxaj1TJ7pu2dXWhrmfCw2YbduPVMnt3/u3d/QiQKUGXbNvYPBMyJxoRaOnoAWRS0CnTOjrHjCwePM7X7/QZ/ekR4mEr/5AozaHZ2OAmL1LDaxwAE2vhlpZb45VvuqJXfR3k+8FHjv0fC9JhKupXtrTcGiwa3IbPZBKPUJGwEqBPA0UD25aWyiJy+lzM4nx84iwqVutf0oslmPDhZPNa+8u6T8G9XAKCAjIa5y/7A38FEISTj4ZTYewH/3oHilungu5m1AeDtRWGu2FAPswQmlr8h1NyBn82gaB6gBYURHAGAAa9ERCzjCFQ9HgIgcamdwhoTcURAtVAHkGgYyobGmn7xB5guhh2h248lE63NsJDV2MhvA7PbSudlSJZJsxCDkKGFEkImA7MUroIyaJlwDwRKLIkipAO3tbGFjnEPMnSWdXe+KDaXIg30exTqyXpKL1BNalShxnCIsCMZAJJQsU4N9GjUlKa1C2tHGX00ik8pamqjg2xxUjZ0iFSRXF7eiqqzkTWDzksCa1PAG4ggpIMcZxgGhdsw/Plr2moqnd71wJ0X00SaEWUlDT9c6lcJYZx0Q7j1woAAAA=') format('woff2');
+font-weight: normal;
+font-style: normal;
+font-display:swap;	
+}
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    src: url('data:application/octet-stream;base64,d09GMgABAAAAAAU8AA0AAAAAENAAAATnAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP0ZGVE0cGh4GVgCDDBEICpJ0j0gLLAABNgIkA1IEIAWEPQeCGhsODiAeBW5rw05UaAXNj8clKuc/tPv+3Hqshu4L7w3MaqQa+NvaaU0s4VXEv9zu/VpgiUYaFlDCWUKtNQ884IiSuP4Kho/319qv7p/PNwWmiyYa2SxRKiHt7ds9/p4gUUwrM3cfXfyGxBCahyiWf0IrlRJIidhdhziX7j6xQoDe/EEACIDn5Vu/AcDbl31D+rcmgADwBDAIyx0xABgAZQe7AEaWFJAGILu69zd8LAAYxgZjyNkrULJktkJ8rd/NdEe/w569GLQCpNLZpPsLbYtU2kQMOhN1ZMEwwTf+W1wtTdms61DZrJmNTR7tTg9q+ah8LkfuPAFWHJ6RiZkFy8CBIyfOXLhy4w7UlclNdQAY6ctDqg769SNv97CNRmPc7BBgr8IT1lKTZmBlcjBJ1NJ7BKZSORf2SLRG2jjHfeSGA55yxYZDnqM3zfVSNi9X5MXhMZsPe0j5loMeo0hY37SshYiWUY4kRlsudli+EZizgROkjVtrLNByIGNiePSm7bcLyzYRzd3MO8ibtim+NY+A6BBnTDlHWsBWbDjQMgo0MjrIWdzCL98IZtp8uI2PpHE+BZykma+cGVh6k0oW6zWN3AgkiRUUFyKOIqoIWVxFcS2iCpGo2USkFMnUpagmpF4Fh8NaLcsFiCSKSHFhmkRScjQ5BEdbaQRNuQigOXB+0nOOV+zNVapycSAdnLf0EsCVvbmqQbFyybhV5dZQG71BRNpxaW+uil/U+KXasKYA8WNd+i1BNXdN0kK0baO0xCUJFh+vzR1P0rRtVGpOnl+maqw2eVwQ94oTV7GgdEKNxc0ZtNqDdzmf1BaijZtcl3GTtRDseFeDrLWMOO40fE/NFgVZki7Oy7yhyWqEF6kHGxaX1DaVJc/F/5rWACyCdnOq40TP48UGR1Zel42E80hWrbubPWFtfqFsxX2x2nC0qW7G4cCF206/tYfzul/hjKTzUTyal5hTZpbJybLidnvenHaIDaKVEcXtHsObZ4sXn5F4xhtGliNizxXfuHpsVs6nfGduF1IdasD3CkOksUEmKJ9V9dgfgo7SUkt+KJwJCnY4rGrQ3hm0/QOM4nOdMhdj+jjzU+7QdgDoLlZ5/jf6XhTcA29BOUJNksnkv6TSEpDa7asMDA9mdSRQSi8IZh9a8iWKU8JvC8/gYR+m59HfFOjkFmgwwiKs+Bj2gq4DA2RMdS8sPAbQDePeAagJzZAkqN5ITgG4rAaRitUieFgDK9iAGAiAiGATpXf4iMhmMYyqs1hhHmUZeGZElhEfmZtUfA05Qq0VhbGUxeAUZbFaNWYZjPU/y8gzSYmajE0zsvTpNYEo1WSq8aJID7UlkkhoG0dtryrXp1uHVnh/sjV1svrKgBL5Cz3wBYd1IDIhCwGLbeO0uRsJYxeCrjgixVgAaSNvCtuo0cxQMWyiZ5EwIVp4oTCuGNemimH2EDFOFLEyKpEbu03SjYbG2KJtT7S3D7E3AZ9XATLVOON1+CPFgyOn4yXT/xBqD4nFLrJH6i/4GN/LA0CYMMSSgYxkIjNZyEoc8SSQAzmSEzmTC7mSG9fSrk4a19drm9gv5Mg/q7ibxqmTn23befoUXrNkMZ9SoO2zTGi3PWuLMcvcvCdP+RTDfL5LU29bt2p7egfe1rsKwel6p8ZiYr8dlAZAATkGaAigBwA=') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display:swap;	
+}
+.fa-facebook-f:before {
+    content: "\f39e";
+}
+
+.fa-instagram:before {
+    content: "\f16d";
+}
+
+.ltn__header-options i, .ltn__header-top-area i {
+    font-weight: 700;
+}
+
+.fab {
+    font-family: "Font Awesome 5 Brands";
+}
+
+.fa, .fab, .fad, .fal, .far, .fas {
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+.fa-arrow-right:before {
+    content: "\f061";
+}
+.fa-th-large:before {
+    content: "\f009";
+}
+.fa-list:before {
+    content: "\f03a";
+}
+.fa-angle-double-right:before {
+    content: "\f101";
+}
+.fa-angle-double-left:before {
+    content: "\f100";
+}
+.fa, .fas {
+    font-weight: 900;
+}
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+}
+{{ 'fa-solid-900.woff2' | asset_url }}
+.jdgm-prev-badge__text {
+    visibility: unset!important;
+}
+.template-product .product-variant-option.pro-size.color-option script + div.Size{
+    margin-top: 135.5px;
+}
+.template-product .product-variant-option.pro-size.color-option script + div.Size .header {
+    margin-bottom: 10px;
+}
+html:not(.jsload) .product-variant-option:not(:has(variant-swatch-king)) {
+    display: none;
+}
+html:not(.jsload) #gokwik-buy-now.disabled, .gokwik-disabled {
+    opacity: 1 !important;
+    cursor: not-allowed;
+}
+html:not(.jsload) #gokwik-buy-now.disabled .addloadr#btn-loader {
+    display: none !important;
+}
+.fa-shopping-cart:before {
+    content: "\f07a";
+}
+{% if product.available == false %}
+html:not(.jsload) .ltn__shop-details-area .shop-details-info li.quantity-selector {
+    display: none !important;
+}
+{% endif %}
+</style>
+
+
+{% if canonical_url contains "/products/cukoo-solid-single-piece-solid-swimwear-swimsuit-black" %}
+
+<style>
+@media (max-width: 767px){
+.template-product .ltn__shop-details-large-img:not(.slick-initialized) {
+    aspect-ratio: 343/511 !important;
+}}
+</style>
+{% endif %}
+
+<style>
+/* issue fixed */
+.ltn__product-slider-area .jdgm-widget.jdgm-widget {
+    min-height: 23.39px;
+    display: block !important;
+}
+@media (max-width:397px){
+    .ltn__product-slider-area .jdgm-widget.jdgm-widget {
+        min-height: 40.19px !important;
+    }
+}
+</style>

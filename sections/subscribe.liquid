@@ -1,6 +1,6 @@
 <!-- NEWSLETTER AREA START -->
 <div {% unless section.settings.full_width_enable %}class="container"{% endunless %}>
-  <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__newsletter-area section-bg-1 bg-overlay-white-30--" id="section-{{ section.id }}" data-section="subscribeSection">
+  <div class="ltn__newsletter-area section-bg-1 bg-overlay-white-30" id="section-{{ section.id }}" data-section="subscribeSection">
     <div {% if section.settings.full_width_enable %}class="container"{% endif %}>
       <div class="row">
         <div class="col-lg-8 offset-lg-2">
@@ -77,9 +77,6 @@
 {% schema %}
   {
     "name": "Newsletter Subscribe",
-    "disabled_on": {
-      "groups": ["header"]
-    },
     "settings": [
         {
           "type": "checkbox",

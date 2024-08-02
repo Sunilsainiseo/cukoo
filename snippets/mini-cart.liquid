@@ -47,7 +47,8 @@
       </div>
       <div class="btn-wrapper">
         <a href="{{ routes.cart_url }}" class="theme-btn-1 btn btn-effect-1">{{ section.settings.view_cart_title }}</a>
-        <a href="/checkout" class="theme-btn-1 btn btn-effect-1">{{ section.settings.checkout_title }}</a>
+        <a href="/checkout" class="theme-btn-2 btn btn-effect-2 shopifycheckoutbtn">{{ section.settings.checkout_title }}</a>
+        {% render 'gokwik-checkout' %}
       </div>
       {%- if section.settings.cart_inforation != '' -%}
       {{ section.settings.cart_inforation }}

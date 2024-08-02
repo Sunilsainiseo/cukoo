@@ -40,7 +40,7 @@
 {%- render 'section-style' -%}
 
 <!-- FEATURE AREA START ( Feature - 3) -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__feature-area" id="section-{{ section.id }}" data-section="serviceFeature">
+<div class="ltn__feature-area" id="section-{{ section.id }}" data-section="serviceFeature">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -59,7 +59,7 @@
             <div class="ltn__feature-item ltn__feature-item-3 text-right" id="block-{{ block.id }}">
               {%- if block.settings.icon_image_enable and block.settings.service_icon -%}
               <div class="ltn__feature-icon">
-                <img src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
               </div>
               {%- elsif block.settings.service_icon_enable -%}
               <div class="ltn__feature-icon">
@@ -108,7 +108,7 @@
         <div class="feature-banner-img text-center mb-30">
           {%- if section.settings.image -%}
           {%- assign image = section.settings.image -%}
-          <img srcset="{% if image.width >= 265 %}{{ image | img_url: '265x' }} 265w,{% endif %}
+          <img data-srcset="{% if image.width >= 265 %}{{ image | img_url: '265x' }} 265w,{% endif %}
                        {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                        {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
                        {% if image.width >= 470 %}{{ image | img_url: '470x' }} 470w,{% endif %}
@@ -120,14 +120,15 @@
                        {% if image.width >= 1100 %}{{ image | img_url: '1100x' }} 1100w,{% endif %}
                        {% if image.width >= 1200 %}{{ image | img_url: '1200x' }} 1200w{% endif %}"
                loading="lazy"
-               src="{{ image | img_url: '265x' }}"
+               data-src="{{ image | img_url: '265x' }}"
+               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
                sizes="100vw"
                width="{{ image.width }}"
                height="{{ image.height }}"
                alt="{{ image.alt | escape }}"
                >
           {%- else -%}
-          <img src="https://via.placeholder.com/267x587" alt="Service Image">
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="https://via.placeholder.com/267x587" alt="Service Image">
           {%- endif -%}
         </div>
       </div>
@@ -140,7 +141,7 @@
             <div class="ltn__feature-item ltn__feature-item-3" id="block-{{ block.id }}">
               {%- if block.settings.icon_image_enable and block.settings.service_icon -%}
               <div class="ltn__feature-icon">
-                <img src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
               </div>
               {%- elsif block.settings.service_icon_enable -%}
               <div class="ltn__feature-icon">
@@ -193,9 +194,6 @@
 {% schema %}
   {
     "name": "Service Feature",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

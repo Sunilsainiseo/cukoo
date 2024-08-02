@@ -1,6 +1,6 @@
 {%- render 'section-style' -%}
 <!-- BANNER AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__banner-area" data-section="multipleBanner" id="section-{{ section.id }}">
+<div class="ltn__banner-area" data-section="multipleBanner" id="section-{{ section.id }}">
   <div class="container">
     <div class="row justify-content-center">
       {%- for block in section.blocks -%}
@@ -11,7 +11,7 @@
           <div class="ltn__banner-img">
             {%- if block.settings.banner_image -%}
             {%- assign image = block.settings.banner_image -%}
-            <a href="{{ block.settings.banner_url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
+            <a href="{{ block.settings.banner_url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;" aria-label="More information">
               <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                            {% if image.width >= 300 %}{{ image | img_url: '370x' }} 370w,{% endif %}
                            {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
@@ -45,13 +45,13 @@
             </div>
             {%- endif -%}
             {%- if block.settings.banner_title != '' -%}
-            <h2 class="white-color"><a href="{{ block.settings.banner_url }}">{{ block.settings.banner_title }}</a></h2>
+            <h2 class="white-color"><a href="{{ block.settings.banner_url }}" aria-label="More information">{{ block.settings.banner_title }}</a></h2>
             {%- endif -%}
           </div>
           {%- endif -%}
           {%- if block.settings.button_enable -%}
           <div class="banner-button">
-            <a href="{{ block.settings.banner_url }}"><i class="fas fa-arrow-right"></i> </a>
+            <a href="{{ block.settings.banner_url }}" aria-label="More information"><i class="fas fa-arrow-right"></i> </a>
           </div>
           {%- endif -%}
         </div>
@@ -81,7 +81,7 @@
               <div class="ltn__banner-img">
                 {%- if block.settings.banner_image -%}
                 {%- assign image = block.settings.banner_image -%}
-                <a href="{{ block.settings.banner_url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
+                <a href="{{ block.settings.banner_url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;" aria-label="More information">
                   <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                                {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                                {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
@@ -115,13 +115,13 @@
                 </div>
                 {%- endif -%}
                 {%- if block.settings.banner_title != '' -%}
-                <h2 class="white-color"><a href="{{ block.settings.banner_url }}">{{ block.settings.banner_title }}</a></h2>
+                <h2 class="white-color"><a href="{{ block.settings.banner_url }}" aria-label="More information">{{ block.settings.banner_title }}</a></h2>
                 {%- endif -%}
               </div>
               {%- endif -%}
               {%- if block.settings.button_enable -%}
               <div class="banner-button">
-                <a href="{{ block.settings.banner_url }}"><i class="fas fa-arrow-right"></i> </a>
+                <a href="{{ block.settings.banner_url }}" aria-label="More information"><i class="fas fa-arrow-right"></i> </a>
               </div>
               {%- endif -%}
             </div>
@@ -131,7 +131,7 @@
               <div class="ltn__banner-img">
                 {%- if block.settings.banner_image_2 -%}
                 {%- assign image = block.settings.banner_image_2 -%}
-                <a href="{{ block.settings.banner_url_2 }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
+                <a href="{{ block.settings.banner_url_2 }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;" aria-label="More information">
                   <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                                {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                                {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
@@ -165,13 +165,13 @@
                 </div>
                 {%- endif -%}
                 {%- if block.settings.banner_title_2 != '' -%}
-                <h2 class="white-color"><a href="{{ block.settings.banner_url_2 }}">{{ block.settings.banner_title_2 }}</a></h2>
+                <h2 class="white-color"><a href="{{ block.settings.banner_url_2 }}" aria-label="More information">{{ block.settings.banner_title_2 }}</a></h2>
                 {%- endif -%}
               </div>
               {%- endif -%}
               {%- if block.settings.button_enable_2 -%}
               <div class="banner-button">
-                <a href="{{ block.settings.banner_url_2 }}"><i class="fas fa-arrow-right"></i> </a>
+                <a href="{{ block.settings.banner_url_2 }}" aria-label="More information"><i class="fas fa-arrow-right"></i> </a>
               </div>
               {%- endif -%}
             </div>
@@ -206,9 +206,6 @@
 {% schema %}
   {
     "name": "Multiple Banner",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		
 	],

@@ -1,16 +1,6 @@
 <div class="product-cart-action">
   {%- if product.available -%}
-  {%- if settings.product_cart_type == 'ajax_cart_drawer' -%}
-  <button type="submit" class="ajax-spin-cart theme-btn-1 btn btn-effect-1 ajax-spin-cart-drawer" id="AddToCart">
-    <i class="fas fa-shopping-cart"></i>
-    <span>
-      <span class="cart-title" id="AddToCartText">{{ settings.cart_button_title }}</span>
-      <span class="cart-loading">{{ settings.wait_title }}</span>
-      <span class="cart-added">{{ settings.added_title }}</span>
-      <span class="cart-unavailable">{{ settings.unavailable_title }}</span>
-    </span>
-  </button>
-  {%- elsif settings.product_cart_type == 'ajax_spin_cart' -%}
+  {%- if settings.product_cart_type == 'ajax_spin_cart' -%}
   <button type="submit" class="ajax-spin-cart theme-btn-1 btn btn-effect-1" id="AddToCart">
     <i class="fas fa-shopping-cart"></i>
     <span>
@@ -31,7 +21,7 @@
   </button>
   {%- endif -%}
   {%- unless settings.product_cart_type == 'without_ajax_cart' -%}
-  <script>
+  <script type="lazyload_int">
     jQuery('#AddToCart').click(function(e) {
       e.preventDefault();
       Shopify.addItemFromFormStart('AddToCartForm', {{ product.id }});

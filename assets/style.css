@@ -1,7 +1,7 @@
 /* -------------------------------------
     Google fonts
 ------------------------------------- */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap");
+/*@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&display=swap");*/
 /*
 font-family: 'Open Sans', sans-serif;
 font-family: 'Rajdhani', sans-serif;
@@ -11162,13 +11162,8 @@ input.cart-plus-minus-box {
     max-height: 450px;
     overflow-y: auto;
     overflow-x: hidden; }
-    .ltn__newsletter-popup-1 .modal-dialog {
-      margin-top: 50px;
-  }
-  .ltn__newsletter-popup-info {
-      padding: 15px 0;
-  }
-}
+  .ltn__newsletter-popup-img {
+    display: none; } }
 
 @media (max-width: 768px) {
   .ltn__newletter-popup-active {

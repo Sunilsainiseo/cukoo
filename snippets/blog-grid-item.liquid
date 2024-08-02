@@ -30,39 +30,6 @@
     {%- if section.settings.blog_date_enable -%}
     <div class="ltn__blog-meta">
       <ul>
-
-        {%- comment -%}
-      {% assign newDate = 'now' | date:'%B %d, %Y' %}
-
-        {% if newDate contains 'January' %}
-          {{ newDate | replace: 'January', 'Janeiro' }}
-        {% elsif newDate contains 'February' %}
-          {{ newDate | replace: 'February', 'Fevereiro' }}
-        {% elsif newDate contains 'March' %}
-          {{ newDate | replace: 'March', 'Março' }}
-        {% elsif newDate contains 'April' %}
-          {{ newDate | replace: 'April', 'Abril' }}
-        {% elsif newDate contains 'May' %}
-          {{ newDate | replace: 'May', 'Maio' }}
-        {% elsif newDate contains 'June' %}
-          {{ newDate | replace: 'June', 'Junho' }}
-        {% elsif newDate contains 'July' %}
-          {{ newDate | replace: 'July', 'Julho' }}
-        {% elsif newDate contains 'August' %}
-          {{ newDate | replace: 'August', 'Agosto' }}
-        {% elsif newDate contains 'September' %}
-          {{ newDate | replace: 'September', 'Setembro' }}
-        {% elsif newDate contains 'October' %}
-          {{ newDate | replace: 'October', 'Outubro' }}
-        {% elsif newDate contains 'November' %}
-          {{ newDate | replace: 'November', 'Novembro' }}
-        {% elsif newDate contains 'December' %}
-          {{ newDate | replace: 'December', 'Dezembro' }}
-        {% else %}
-          {{ newDate }}
-        {% endif %}
-      {%- endcomment -%}
-        
         <li class="ltn__blog-date"><i class="far fa-calendar-alt"></i> {{ article.published_at | date: '%B %d' }}, {{ article.published_at | date: '%Y' }}</li>
       </ul>
     </div>

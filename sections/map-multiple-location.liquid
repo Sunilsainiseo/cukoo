@@ -1,5 +1,5 @@
 <!-- GOOGLE MAP LOCATIONS AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__google-map-locations-area" id="section-{{ section.id }}" data-section="mapMultiLocation">
+<div class="ltn__google-map-locations-area" id="section-{{ section.id }}" data-section="mapMultiLocation">
   <div id="gmap"></div>
 </div>
 <!-- GOOGLE MAP LOCATIONS AREA END -->
@@ -70,9 +70,6 @@ $(function() {
 {% schema %}
   {
     "name": "Multiple Location Map",
-    "disabled_on": {
-      "groups": ["header"]
-    },
     "settings": [
         {
           "type": "text",

@@ -1,21 +1,5 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {% if product.media.size > 1 %}
-<div class="ltn__shop-details-small-img slick-arrow-2" id="ProductThumbs" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+<div class="ltn__shop-details-small-img slick-arrow-2" id="ProductThumbs">
   {% for media in product.media %}
   <div class="single-small-img">
     {%- assign featured_media = current_variant.featured_media | default: product.featured_media -%} 

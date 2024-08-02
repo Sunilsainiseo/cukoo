@@ -1,26 +1,16 @@
 <div class="product-hover-action">
   <ul>
-    
-    {%- unless product.description contains '[affiliate_link]' or variant.inventory_policy == "continue" and variant.inventory_quantity <= 0 -%}
+    {%- unless product.description contains '[affiliate_link]' -%}
     {%- if settings.product_quickview_enalbe -%}
     <li>
       <a title="{{ settings.quickview_title }}" data-toggle="modal" data-target="#quickViewModal" href="javascript:void(0);" 
-         onclick="quiqview('{{ product.handle | handleize }}')"><i class="far fa-eye"></i>
+         onclick="quiqview('{{ product.handle | handleize }}')"><i class="fas fa-shopping-cart"></i>
       </a>
     </li>
     {%- endif -%}
-    <li>
+<!--     <li>
       {%- if product.available -%}
-      {%- if settings.product_cart_type == 'ajax_cart_drawer' -%}
-      <a href="javascript:void(0);" onclick="{{ func }}; return false;" class="ajax-spin-cart ajax-spin-cart-drawer" title="{{ settings.cart_button_title }}">
-        <span>
-          <span class="cart-title"><i class="fas fa-shopping-cart"></i></span>
-          <span class="cart-loading"><i class="fas fa-spinner fa-pulse"></i></span>
-          <span class="cart-added"><i class="fas fa-check"></i></span>
-          <span class="cart-unavailable"><i class="fas fa-exclamation-triangle"></i></span>
-        </span>
-      </a>
-      {%- elsif settings.product_cart_type == 'ajax_spin_cart' -%}
+      {%- if settings.product_cart_type == 'ajax_spin_cart' -%}
       <a href="javascript:void(0);" onclick="{{ func }}; return false;" class="ajax-spin-cart" title="{{ settings.cart_button_title }}">
         <span>
           <span class="cart-title"><i class="fas fa-shopping-cart"></i></span>
@@ -54,9 +44,8 @@
         <span class="cart-text"><i class="fas fa-shopping-cart"></i></span>
       </button>
       {%- endif -%}
-    </li>
+    </li> -->
     {%- endunless -%}
-    
     {%- if settings.wishlist_enable -%}
     <li>
       {%- render 'wishlist-button-2' with product as product -%}

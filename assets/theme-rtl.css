@@ -1,11 +1,9 @@
 /* ====================================
 Theme RTL CSS
 ==================================== */
-html[dir="rtl"] {
-  direction: rtl;
-}
 body{
   direction: rtl;
+  text-align: right;
 }
 .select-option-part select {
   background: rgba(0, 0, 0, 0) url(qcv-arrow-down.png) no-repeat scroll left 20px center;
@@ -15,14 +13,6 @@ body{
 }
 .quickview-btn-cart {
   margin: 0 30px 0 0;
-}
-
-
-
-
-.ltn__product-item-3 .product-price del {
-    margin-right: 10px;
-    margin-left: 0;
 }
 
 

@@ -1,6 +1,6 @@
 {%- render 'section-style' -%}
 <!-- TEAM AREA START (Team - 3) -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__team-area pt-115 pb-90" id="section-{{ section.id }}" data-section="teamMember">
+<div class="ltn__team-area pt-115 pb-90" id="section-{{ section.id }}" data-section="teamMember">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -66,9 +66,6 @@
 {% schema %}
   {
     "name": "Team Member",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

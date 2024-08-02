@@ -88,4 +88,5 @@ $(".action-wishlist").on('click', function(){
   setTimeout(function () {
     $(".adding-wishlist").removeClass("adding-wishlist");
   },2000);
+
 });

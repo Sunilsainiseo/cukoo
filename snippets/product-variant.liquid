@@ -30,7 +30,7 @@
   {%- render 'swatch' with option, block: block -%}
   {% endfor %}
   {%- endif -%}                    
-  <script>
+  <script type="lazyload_int">
     jQuery(function() {
       jQuery('.swatch :radio').change(function() {
         var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');

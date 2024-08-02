@@ -14,7 +14,7 @@
           <div class="ltn__drop-menu user-menu">
             <ul>
               <li>
-                <a href="#"><i class="icon-user"></i></a>
+                <a href="#" aria-label="User Profile"><i class="icon-user"></i></a>
                 <ul>
                   {%- assign user_menu = section.settings.user_menu_handle -%}
                   {%- for link in linklists[user_menu].links -%}
@@ -36,14 +36,14 @@
           {%- endif -%}
           <!-- mini-cart -->
           <div class="mini-cart-icon">
-            <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+            <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle" aria-label="Cart Menu">
               <i class="icon-shopping-cart"></i>
               <sup><span class="bigcounter">{{ cart.item_count }}</span></sup>
             </a>
           </div>
           <!-- Mobile Menu Button -->
           <div class="mobile-menu-toggle d-xl-none">
-            <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle">
+            <a href="#ltn__utilize-mobile-menu" class="ltn__utilize-toggle" aria-label="Toggle Mobile Menu">
               <svg viewBox="0 0 800 600">
                 <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="top"></path>
                 <path d="M300,320 L540,320" id="middle"></path>
@@ -136,84 +136,6 @@
         {%- endif -%}
       </ul>
     </div>
-
-
-    <div class="ltn__utilize-menu mobile-language">
-      <ul>
-        {% if localization.available_languages.size > 1 %}
-          <hr>
-         <li>
-          <div class="ltn__drop-menu ltn__currency-menu ltn__language-menu">
-            <ul>
-              <li>
-                <localization-form>
-                  {% form 'localization' %}
-                    <div class="disclosure">
-                        <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="LanguageList">
-                          {{ localization.language.endonym_name | capitalize }}
-                        </button>
-                        <ul id="LanguageList" role="list" class="disclosure__list">
-                          {% for language in localization.available_languages %}
-                            <li class="disclosure__item" tabindex="-1">
-                              <a href="#"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}" data-value="{{ language.iso_code }}">
-                                {{ language.endonym_name | capitalize }}
-                              </a>
-                            </li>
-                          {% endfor %}
-                        </ul>
-                        <input type="hidden" name="language_code" value="{{ localization.language.iso_code }}">
-                    </div>
-                  {% endform %}
-                </localization-form>
-              </li>
-            </ul>
-          </div>
-        </li>       
-        {%- endif -%}
-      </ul>
-    </div>
-    
-    <div class="mobile-currency">
-      {%- if settings.currency_enable -%} 
-      {%- if settings.currency_handle == 'shopify_currency' -%}
-      {% if localization.available_countries.size > 1 %}
-      <div class="ltn__drop-menu ltn__currency-menu default-currency-menu">
-        <ul>
-          <li>
-            <localization-form>
-              {% form 'localization' %}
-                <div class="disclosure">
-                  <button type="button" class="disclosure__button" aria-expanded="false" aria-controls="CountryList">
-                    {{ localization.country.iso_code }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
-                  </button>
-          
-                  <ul id="CountryList" role="list" class="disclosure__list ltn__scrollbar">
-                    {% for country in localization.available_countries %}
-                      <li class="disclosure__item" tabindex="-1">
-                        <a href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
-                          {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-          
-                  <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
-                </div>
-              {% endform %}
-            </localization-form>
-          </li>
-        </ul>
-      </div>
-      {% endif %}
-      {%- elsif settings.currency_handle == 'ajax_currency' -%}
-      <div class="ltn__drop-menu ltn__currency-menu">
-        {%- render 'currency-picker' -%}
-      </div>
-      {%- endif -%}
-      {%- endif -%}
-    </div>
-
-    
     {%- if section.settings.header_option_enable -%}
     <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
       <ul>

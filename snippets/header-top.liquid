@@ -8,7 +8,7 @@
             {%- if block.settings.email != '' -%}
             <li><a href="{{ block.settings.email_url }}"><i class="icon-mail"></i> {{ block.settings.email }}</a></li>
             {%- endif -%}
-            {%- if block.settings.address != '' -%}
+            {%- if block.settings.email != '' -%}
             <li><a href="{{ block.settings.address_url }}"><i class="icon-placeholder"></i> {{ block.settings.address }}</a></li>
             {%- endif -%}
           </ul>
@@ -87,7 +87,7 @@
   .ltn__header-top-area {
     background-color: {{ block.settings.bg_color }};
   }
-  .ltn__top-bar-menu, .ltn__drop-menu>ul>li .disclosure__button{
+  .ltn__top-bar-menu {
     color: {{ block.settings.content_color }};
   }
 </style>
@@ -101,8 +101,8 @@
   .ltn__header-top-area {
     background-color: {{ block.settings.other_pages_bg_color }};
   }
-  .ltn__top-bar-menu, .ltn__drop-menu>ul>li .disclosure__button{
-    color: {{ block.settings.content_color }};
+  .ltn__top-bar-menu {
+    color: {{ block.settings.other_pages_content_color }};
   }
 </style>
 {%- endunless -%}

@@ -1,22 +1,6 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- render 'section-style' -%}
 <!-- PRODUCT TAB AREA START (product-item-3) -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__product-tab-area ltn__product-gutter {% if section.settings.large_width_enable %}plr--9{% endif %}" id="section-{{ section.id }}" data-section="tabWithProduct">
+<div class="ltn__product-tab-area ltn__product-gutter {% if section.settings.large_width_enable %}plr--9{% endif %}" id="section-{{ section.id }}" data-section="tabWithProduct">
   <div class="{% if section.settings.large_width_enable %}container-fluid{% else %}container{% endif %}">
     <div class="row">
       <div class="col-lg-12">
@@ -28,13 +12,13 @@ endif
           <h6 class="section-subtitle ltn__secondary-color">{{ section.settings.section_sub_title }}</h6>
           {%- endif -%}
           {%- if section.settings.section_title != '' -%}
-          <h2 class="section-title">{{ section.settings.section_title }}</h2>
+          <h1 class="section-title">{{ section.settings.section_title }}</h1>
           {%- endif -%}
         </div>
         {%- elsif section.settings.heading_style_handle == 'style_two' -%}
         <div class="section-title-area {% unless section.settings.tab_bar_right %}text-center{% endunless %}">
           {%- if section.settings.section_title != '' -%}
-          <h2 class="section-title">{{ section.settings.section_title }}</h2>
+          <h1 class="section-title">{{ section.settings.section_title }}</h1>
           {%- endif -%}
           {%- if section.settings.section_sub_title != '' -%}
           <p>{{ section.settings.section_sub_title }}</p>
@@ -87,7 +71,7 @@ endif
           {%- if tab_product == empty -%}
           <div {{ block.shopify_attributes }} class="tab-pane fade{% if forloop.first == true %} show active{% endif %}" id="tab-{{ i }}">
             <div class="ltn__product-tab-content-inner">
-              <div class="row ltn__tab-product-slider-one-active slick-arrow-1" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+              <div class="row ltn__tab-product-slider-one-active slick-arrow-1" {{ data_slick_activation }}>
                 {% for i in (1..product_limit) %}
                 {% capture a %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
                 <div class="col-lg-12">
@@ -112,7 +96,7 @@ endif
           {%- assign i = i | plus: 1 -%}
           {%- else -%}
           <div {{ block.shopify_attributes }} class="tab-pane fade{% if forloop.first == true %} show active{% endif %}" id="tab-{{ block.id }}-{{ tab_product.title | handle }}">
-            <div class="row ltn__tab-product-slider-one-active slick-arrow-1" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+            <div class="row ltn__tab-product-slider-one-active slick-arrow-1" {{ data_slick_activation }}>
               {% assign product_column = section.settings.product_column_handle %}
               {% for product in tab_product.products limit: product_limit %}
               <div class="col-lg-12">
@@ -140,9 +124,6 @@ endif
 {% schema %}
   {
     "name": "Tab with Product",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
           "type": "checkbox",

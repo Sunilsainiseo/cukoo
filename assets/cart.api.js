@@ -17,11 +17,9 @@ Shopify.onError = function(XMLHttpRequest, textStatus) {
   jQuery('.error_message').text(str);
   jQuery('#modalAddToCartError').modal("toggle");
   setTimeout(function () {
-    jQuery('.ltn__utilize-cart-menu').removeClass("ltn__utilize-open");
-    jQuery('.ltn__utilize-cart-menu').removeClass("dontshow");
-    jQuery('.ltn__utilize-overlay').fadeOut();
-  },1000);
-  jQuery('.ltn__utilize-cart-menu').addClass("dontshow");
+  	jQuery('.shopping__cart').removeClass("shopping__cart__on");
+    jQuery('.body__overlay').removeClass("is-visible");
+  },2000);
 }
 
 Shopify.addItem = function(variant_id, quantity, callback) {

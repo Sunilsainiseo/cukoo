@@ -16,7 +16,8 @@
             <p class="added-cart"><i class="fa fa-check-circle"></i> {{ settings.successfull_note }}</p> 
             <div class="btn-wrapper">
               <a href="{{ routes.cart_url }}" class="theme-btn-1 btn btn-effect-1">{{ settings.view_cart_button2 }}</a>
-              <a href="/checkout" class="theme-btn-2 btn btn-effect-2">{{ settings.checkout_button2 }}</a>
+              <a href="/checkout" class="theme-btn-2 btn btn-effect-2 shopifycheckoutbtn" style='margin-top:10px;width: 100% !important;'>{{ settings.checkout_button2 }}</a>
+              {% render 'gokwik-checkout' %}
             </div>
           </div>
         </div>

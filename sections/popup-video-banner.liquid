@@ -12,7 +12,7 @@
 {%- render 'section-style' -%}
 
 <!-- VIDEO AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__video-popup-area {% if section.settings.margin_bottom_minus %}ltn__video-popup-margin{% endif %} {% if section.settings.margin_top_minus %}ltn__video-popup-margin-2{% endif %}" id="section-{{ section.id }}" data-section="popupVideoBanner">
+<div class="ltn__video-popup-area {% if section.settings.margin_bottom_minus %}ltn__video-popup-margin{% endif %} {% if section.settings.margin_top_minus %}ltn__video-popup-margin-2{% endif %}" id="section-{{ section.id }}" data-section="popupVideoBanner">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -32,9 +32,6 @@
 {% schema %}
   {
     "name": "Popup Video Banner",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
           "type": "image_picker",

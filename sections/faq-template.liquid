@@ -1,6 +1,6 @@
 {%- render 'section-style' -%}
 
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__faq-area" id="section-{{ section.id }}">
+<div class="ltn__faq-area" id="section-{{ section.id }}">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -56,9 +56,6 @@
 {% schema %}
   {
     "name": "FAQ",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

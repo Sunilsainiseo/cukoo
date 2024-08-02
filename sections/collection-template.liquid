@@ -1,16 +1,9 @@
 <div class="collection-template-page ltn__product-area ltn__product-gutter {% if section.settings.large_width_enable %}plr--9{% endif %}" data-section="collectionTemplate">
 
-  {% if section.settings.sidebar_handle == 'drawer_filter' %}
-  {% render 'collection-filter-drawer' %}
-  {% endif %}
-  
   {%- if section.settings.collection_description_enable and collection.handle != 'all' -%}
     <style>
       html {
         scroll-behavior: smooth;
-      }
-      .ltn__breadcrumb-list ul li:last-child {
-          color: var(--ltn__secondary-color);
       }
       {% if section.settings.content_margin_top_enable %}
       @media (min-width: 1199px) {
@@ -66,17 +59,9 @@
           {%- endif -%}
           <div class="{% if collection.featured_image != blank %}col-md-8{% else %}col-12{% endif %}">
             <h1>{{ collection.title }}</h1>
-            <div class="ltn__breadcrumb-list mb-20">
-              <ul class="breadcrumb-list">
-                <li>
-                  <a href="{{ routes.root_url }}" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
-                </li>
-                <li><span>{{ collection.title }}</span></li>
-              </ul>
-            </div>
             {{ collection.description }}
             <div class="btn-wrapper  animated">
-              <a href="#collection__main--area" class="theme-btn-1 btn btn-effect-1" >{{ section.settings.shop_now_title }}</a>
+              <a href="#collection__main--area" class="theme-btn-1 btn btn-effect-1" >Shop Now</a>
             </div>
           </div>
         </div>
@@ -86,12 +71,12 @@
   
   <div class="{% if section.settings.large_width_enable %}container-fluid{% else %}container{% endif %}">
     <div {% if section.settings.collection_description_enable and collection.handle != 'all' %}id="collection__main--area"{% endif %} class="row {% if section.settings.sidebar_handle == 'right_sidebar_handle' %}flex-row-reverse{% endif %}">     
-      {%- if section.settings.sidebar_handle == 'left_sidebar_handle' or section.settings.sidebar_handle == 'right_sidebar_handle' -%}
+      {%- unless section.settings.sidebar_handle == 'without_sidebar' -%}
       <div class="{% if section.settings.large_width_sidebar %}col-lg-4{% else %}col-lg-3{% endif %} col-12">
         {%- render 'collection-sidebar' -%}
       </div>
-      {%- endif -%}
-      <div class="{% if section.settings.sidebar_handle == 'without_sidebar' or section.settings.sidebar_handle == 'drawer_filter' %}col-lg-12{% else %}{% if section.settings.large_width_sidebar %}col-lg-8{% else %}col-lg-9{% endif %}{% endif %} col-12">
+      {%- endunless -%}
+      <div class="{% if section.settings.sidebar_handle == 'without_sidebar' %}col-lg-12{% else %}{% if section.settings.large_width_sidebar %}col-lg-8{% else %}col-lg-9{% endif %}{% endif %} col-12">
         {%- assign products_limit = section.settings.products_limit_handle -%}
         {%- paginate collection.products by products_limit -%}
 
@@ -104,7 +89,7 @@
             <div class="ltn__product-tab-content-inner ltn__product-grid-view">
               <div class="row">
                 {%- for product in collection.products -%}
-                <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_column_md }} col-{{ section.settings.product_column_xs }}">
+                <div class="col-lg-{{ section.settings.product_column }} col-md-{{ section.settings.product_column_md }} col-{{ section.settings.product_column_xs }}">
                   {%- render 'product-grid-item', product: product -%}
                 </div>
                 {%- endfor -%}
@@ -115,7 +100,7 @@
             <div class="ltn__product-tab-content-inner ltn__product-list-view">
               <div class="row">
 				{%- for product in collection.products -%}
-                <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="col-lg-12">
+                <div class="col-lg-12">
                   {%- render 'product-list-item', product: product -%}
                 </div>
                 {%- endfor -%}
@@ -156,12 +141,6 @@
               "id": "collection_description_enable",
               "label": "Show Collection Content",
               "default": true
-          },
-		  {
-              "type": "text",
-              "id": "shop_now_title",
-              "label": "Shop Now Button Title",
-              "default": "Shop Now"
           },
 		  {
               "type": "checkbox",
@@ -313,10 +292,6 @@
                       "value": "right_sidebar_handle"
                   },
                   {
-                      "label": "Filter Drawer",
-                      "value": "drawer_filter"
-                  },
-                  {
                       "label": "Without Sidebar",
                       "value": "without_sidebar"
                   }
@@ -345,48 +320,6 @@
               ],
               "default": "storefront_filtering",
               "info": "Customize Storefront [filters](\/admin\/menus)"
-          },
-		  {
-              "type": "text",
-              "id": "filter_title",
-              "label": "Filter Button Title",
-              "default": "Filter"
-          },
-		  {
-              "type": "text",
-              "id": "clear_all_title",
-              "label": "Clear all Title",
-              "default": "Clear all"
-          },
-		  {
-              "type": "text",
-              "id": "selected_title",
-              "label": "Selected Title",
-              "default": "selected"
-          },
-		  {
-              "type": "text",
-              "id": "reset_title",
-              "label": "Reset Title",
-              "default": "Reset"
-          },
-		  {
-              "type": "text",
-              "id": "price_title",
-              "label": "Price Title",
-              "default": "Price"
-          },
-		  {
-              "type": "text",
-              "id": "from_title",
-              "label": "From Title",
-              "default": "From"
-          },
-		  {
-              "type": "text",
-              "id": "to_title",
-              "label": "To Title",
-              "default": "To"
           }
       ],
 	  "blocks":[
@@ -418,7 +351,7 @@
               "type": "range",
               "id": "categories_list_limit_hanlde",
               "min": 5,
-              "max": 100,
+              "max": 20,
               "step": 1,
               "label": "Category Limit",
               "default": 5

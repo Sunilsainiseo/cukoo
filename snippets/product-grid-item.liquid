@@ -10,16 +10,17 @@
 {%- if product.available -%}
 {%- assign func = "Shopify.addItem(" | append: variant.id | append: ", 1)" -%}
 {%- endif -%}
-<div class="ltn__product-item ltn__product-item-3 text-center product-wrapper {{ variant.id }}">
-  <div class="product-img{% if settings.image_ratio == "square" %} product-img-square{% endif %}">
+<div class="ltn__product-item ltn__product-item-3 text-center {{ variant.id }}">
+  <div class="product-img">
     {%- assign image = product.featured_image.src -%}
-    <a href="{{ product.url | within: collection }}" class="image-position-wrapper primary_img" {% if settings.image_ratio == "adapt_to_image" %}style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"{% endif %}>
-      <img srcset="{% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
+    <a href="{{ product.url | within: collection }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
+      <img data-srcset="{% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
                    {% if image.width >= 243 %}{{ image | img_url: '266x' }} 266w,{% endif %}
                    {% if image.width >= 366 %}{{ image | img_url: '366x' }} 366w,{% endif %}
                    {% if image.width >= 576 %}{{ image | img_url: '576x' }} 576w,{% endif %}
                    {% if image.width >= 600 %}{{ image | img_url: '600x' }} 600w,{% endif %}"
-           src="{{ image | img_url: '600x' }}"
+           data-src="{{ image | img_url: '600x' }}"
+           src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
            sizes="100vw"
            width="{{ image.width }}"
            height="{{ image.height }}"
@@ -28,59 +29,41 @@
            class="image-position-size popup_cart_image"
            >
     </a>
-    {%- if product.images.size > 1 and settings.hover_second_image_enable -%}
-      {%- for image in product.images limit: 1 offset: 1 -%}
-      <a href="{{ product.url | within: collection }}" class="image-position-wrapper secondary_img" {% if settings.image_ratio == "adapt_to_image" %}style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;"{% endif %}>
-        <img srcset="{% if image.width >= 150 %}{{ image | img_url: '152x' }} 152w,{% endif %}
-                     {% if image.width >= 243 %}{{ image | img_url: '266x' }} 266w,{% endif %}
-                     {% if image.width >= 366 %}{{ image | img_url: '366x' }} 366w,{% endif %}
-                     {% if image.width >= 576 %}{{ image | img_url: '576x' }} 576w,{% endif %}
-                     {% if image.width >= 600 %}{{ image | img_url: '600x' }} 600w,{% endif %}"
-             src="{{ image | img_url: '600x' }}"
-             sizes="100vw"
-             width="{{ image.width }}"
-             height="{{ image.height }}"
-             alt="{{ image.alt | escape }}"
-             loading="lazy"
-             class="image-position-size popup_cart_image"
-             >
-      </a>
-      {%- endfor -%}
-    {%- endif -%}
-    
     {%- if sold_out or on_sale or settings.new_title != '' or product.description contains '[new_products]' -%}
     {%- render 'product-badge' with product as product, on_sale: on_sale, sold_out: sold_out -%}
     {%- endif -%}
     {%- if settings.product_action_button_enable and template != 'cart' -%}
     {%- render 'product-action', product: product, on_sale: on_sale, sold_out: sold_out, variant: variant, func: func -%}
     {%- endif -%}
-    {%- if product.metafields.countdown.date != blank -%}
+    {%- if product.metafields.countdown != empty -%}
     <div class="product-grid-countdown" data-countdown="{{ product.metafields.countdown.date }}"></div>
     {%- elsif product.description contains '[countdown]' -%}
     {%- assign count_down_first = product.description | split:'[/countdown]' | first -%}
     {%- assign count_down_final = count_down_first | split:'[countdown]' | last -%}
     <div class="product-grid-countdown" data-countdown="{{ count_down_final }}"></div> 
-    {%- endif -%} 
+    {%- endif -%}
   </div>
   <div class="product-info">
-    
     {%- if settings.product_review_enable -%}
     <div class="product-ratting">
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
     </div>
     {%- endif -%}
-    <h3 class="product-title popup_cart_title{% unless settings.title_wrap_enalbe %} product-full-title{% endunless %}"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+    <h2 class="product-title popup_cart_title"><a href="{{ product.url | within: collection }}">{{ product.title }}</a></h2>
+    
+    <!-- Start of Judge.me code --> 
+      <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge' data-id='{{ product.id }}' data-auto-install='false'>
+        {{ product.metafields.judgeme.badge }}
+      </div>  
+      <!-- End of Judge.me code -->
+    
     <div class="product-price">
       {%- if product.variants.first.compare_at_price > product.variants.first.price -%}
       <del>{{ product.variants.first.compare_at_price | money }}</del>
       {%- endif -%}
-      <span>{{ product.variants.first.price | money }}</span> 
+      <span>{{ product.variants.first.price | money }}</span>
     </div>
-
-    {%- if product.variants.size > 1 and settings.grid_color_swatch_enable -%}
-    {%- render 'grid-color-swatch', product: product, variant: variant -%}
-    {%- endif -%}
-    
+    <p class="product-text">(Inclusive of all taxes)</p>
     {%- if settings.product_info_enable -%}
     {%- assign year_select = product.metafields.year_select -%}
     {%- assign key = 'year' -%}    

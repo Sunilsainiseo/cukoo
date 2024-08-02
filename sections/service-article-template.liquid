@@ -6,7 +6,7 @@
           {%- if article.image -%}
           {%- assign image =  article.image -%}
           <div class="ltn__blog-img image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-            <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
+            <img data-srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                          {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                          {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
                          {% if image.width >= 470 %}{{ image | img_url: '470x' }} 470w,{% endif %}
@@ -18,7 +18,8 @@
                          {% if image.width >= 1100 %}{{ image | img_url: '1100x' }} 1100w,{% endif %}
                          {% if image.width >= 1200 %}{{ image | img_url: '1200x' }} 1200w{% endif %}"
                  loading="lazy"
-                 src="{{ image | img_url: '1200x' }}"
+                 data-src="{{ image | img_url: '1200x' }}"
+                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
                  sizes="100vw"
                  width="{{ image.width }}"
                  height="{{ image.height }}"
@@ -91,7 +92,7 @@
             {%- if block.settings.banner_image != blank and block.settings.banner_image_url != blank -%}
             {%- assign image = block.settings.banner_image -%}
             <a href="{{ block.settings.banner_image_url }}" class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-              <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
+              <img data-srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                            {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                            {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
                            {% if image.width >= 470 %}{{ image | img_url: '470x' }} 470w,{% endif %}
@@ -103,7 +104,8 @@
                            {% if image.width >= 1100 %}{{ image | img_url: '1100x' }} 1100w,{% endif %}
                            {% if image.width >= 1200 %}{{ image | img_url: '1200x' }} 1200w{% endif %}"
                    loading="lazy"
-                   src="{{ image | img_url: '370x' }}"
+                   data-src="{{ image | img_url: '370x' }}"
+                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
                    sizes="100vw"
                    width="{{ image.width }}"
                    height="{{ image.height }}"
@@ -113,7 +115,7 @@
             </a>
             {%- elsif block.settings.banner_image != blank -%}
             <span class="image-position-wrapper" style="padding-bottom: {{ 1 | divided_by: image.aspect_ratio | times: 100 }}%;">
-              <img srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
+              <img data-srcset="{% if image.width >= 270 %}{{ image | img_url: '270x' }} 270w,{% endif %}
                            {% if image.width >= 300 %}{{ image | img_url: '300x' }} 300w,{% endif %}
                            {% if image.width >= 370 %}{{ image | img_url: '370x' }} 370w,{% endif %}
                            {% if image.width >= 470 %}{{ image | img_url: '470x' }} 470w,{% endif %}
@@ -125,7 +127,8 @@
                            {% if image.width >= 1100 %}{{ image | img_url: '1100x' }} 1100w,{% endif %}
                            {% if image.width >= 1200 %}{{ image | img_url: '1200x' }} 1200w{% endif %}"
                    loading="lazy"
-                   src="{{ image | img_url: '370x' }}"
+                   data-src="{{ image | img_url: '370x' }}"
+                   src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad"
                    sizes="100vw"
                    width="{{ image.width }}"
                    height="{{ image.height }}"

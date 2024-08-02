@@ -1,20 +1,4 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=related">
+<div class="product-recommendations" data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=10&intent=related">
   {%- if recommendations.performed and recommendations.products_count > 0 -%}
     <div class="ltn__product-slider-area ltn__product-gutter pb-50">
       <div class="container">
@@ -31,9 +15,6 @@ endif
                   "autoplay": true,
                   "autoplaySpeed": {{ section.settings.autoplay_speed }},
                   {%- endif -%}
-                  {% if theme_rtl %}
-                  "rtl": true,
-                  {% endif %}
                    "slidesToShow": {{ section.settings.product_column }},
                     "responsive":[
                         {"breakpoint":992, "settings": {"slidesToShow": {{ section.settings.product_column_md }}, "arrows": false, "dots": true} },
@@ -43,7 +24,7 @@ endif
     
               }'
               {%- endcapture -%}
-        <div class="row ltn__related-product-slider-one-active slick-arrow-1" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+        <div class="row ltn__related-product-slider-one-active slick-arrow-1" {{ data_slick_activation }}>
           {%- for product in recommendations.products -%}
           <div class="col-lg-12">
             {%- render 'product-grid-item', product: product -%}
@@ -56,7 +37,7 @@ endif
 </div>
 
 
-{% javascript %}
+<script>
   const handleIntersection = (entries, observer) => {
     if (!entries[0].isIntersecting) return;
 
@@ -95,7 +76,7 @@ endif
   const observer = new IntersectionObserver(handleIntersection, {rootMargin: '0px 0px 200px 0px'});
 
   observer.observe(productRecommendationsSection);
-{% endjavascript %}
+</script>
 
 
 {% schema %}

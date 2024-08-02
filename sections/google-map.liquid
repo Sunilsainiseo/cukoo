@@ -1,4 +1,4 @@
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="google-map" id="section-{{ section.id }}" data-section="googleMap">
+<div class="google-map" id="section-{{ section.id }}" data-section="googleMap">
   {{ section.settings.google_map }}
 </div>
 
@@ -7,9 +7,6 @@
 {% schema %}
   {
     "name": "Google Map",
-    "disabled_on": {
-      "groups": ["header"]
-    },
     "settings": [
         {
           "type": "html",

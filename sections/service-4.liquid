@@ -26,7 +26,7 @@
 {%- render 'section-style' -%}
 
 <!-- FEATURE AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__feature-area" id="section-{{ section.id }}" data-section="serviceSectionFour">
+<div class="ltn__feature-area" id="section-{{ section.id }}" data-section="serviceSectionFour">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row">
@@ -43,7 +43,7 @@
         <div class="ltn__feature-item ltn__feature-item-6 text-center---">
           {%- if block.settings.icon_image_enable and block.settings.service_icon -%}
           <div class="ltn__feature-icon">
-            <img src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="{{ block.settings.service_icon | img_url: '100x' }}" alt="{{ block.settings.service_icon.alt }}" loading="lazy">
           </div>
           {%- elsif block.settings.service_icon_enable -%}
           <div class="ltn__feature-icon">            
@@ -103,9 +103,6 @@
 {% schema %}
   {
     "name": "Service (2)",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
 		  "type": "header",

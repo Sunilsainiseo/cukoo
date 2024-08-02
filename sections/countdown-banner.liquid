@@ -33,7 +33,7 @@
 {%- render 'section-style' -%}
 
 <!-- COUNTDOWN AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__countdown-area section-bg-1" data-section="countdownBanner" id="section-{{ section.id }}">
+<div class="ltn__countdown-area section-bg-1" data-section="countdownBanner" id="section-{{ section.id }}">
   <div class="container">
     <div class="row">
       <div class="col-lg-6 align-self-center">
@@ -98,9 +98,6 @@
 {% schema %}
   {
     "name": "Countdown Banner",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
         {
           "type": "header",

@@ -1,19 +1,3 @@
-{% liquid
-assign theme_rtl = false
-if settings.rtl_enable and settings.langauges_rtl == blank
-  assign theme_rtl = true
-endif
-
-if settings.rtl_enable and settings.langauges_rtl != blank
-  assign rtl_languages = settings.langauges_rtl | split: ','
-  for language in rtl_languages
-    if language == request.locale.iso_code
-      assign theme_rtl = true
-    endif
-  endfor
-endif
-%}
-
 {%- if section.settings.section_color_enable -%}
 <style>
   #section-{{ section.id }}.bg-overlay-theme-black-90:before {
@@ -33,7 +17,7 @@ endif
 {%- endif -%}
 {%- render 'section-style' -%}
 <!-- BRAND LOGO AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__brand-logo-area ltn__brand-logo-1 section-bg-1 {% if section.settings.large_width_enable %}plr--9{% endif %} {% if section.settings.section_color_enable %}bg-overlay-theme-black-90{% endif %}" id="section-{{ section.id }}" data-section="brandLogo">
+<div class="ltn__brand-logo-area ltn__brand-logo-1 section-bg-1 {% if section.settings.large_width_enable %}plr--9{% endif %} {% if section.settings.section_color_enable %}bg-overlay-theme-black-90{% endif %}" id="section-{{ section.id }}" data-section="brandLogo">
   <div class="{% if section.settings.large_width_enable %}container-fluid{% else %}container{% endif %}">
     {%- capture data_slick_activation -%}
         data-slick='{
@@ -51,7 +35,7 @@ endif
 
         }'
         {%- endcapture -%}
-    <div class="row ltn__brand-logo-active" {% if theme_rtl %}dir="rtl"{% endif %} {{ data_slick_activation }}>
+    <div class="row ltn__brand-logo-active" {{ data_slick_activation }}>
       {%- for block in section.blocks -%}
       {%- case block.type -%}
       {%- when 'brand' -%}
@@ -89,9 +73,6 @@ endif
 {% schema %}
   {
     "name": "Brand Logo",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
 		{
           "type": "checkbox",

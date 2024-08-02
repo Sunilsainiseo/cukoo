@@ -1,7 +1,7 @@
-{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' | script_tag }}
-<script src="{{ 'recently-view.js' | asset_url }}"></script>
+<script type="lazyload_int" data-src="{{ '//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js' }}"></script>
+<script type="lazyload_int" data-src="{{ 'recently-view.js' | asset_url }}"></script>
 
-<section {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="recently-viewed-products" id="section-{{ section.id }}" data-section="RecentlyViewedProduct">
+<section class="recently-viewed-products" id="section-{{ section.id }}" data-section="RecentlyViewedProduct">
   <div class="container">
     {%- if section.settings.section_title != '' or section.settings.section_sub_title != '' -%}
     <div class="row" id="recently-viewed-products" style="display: none;">
@@ -45,32 +45,7 @@
   </div>
 </section>
 
-<script>
-
-  /* this code for currency support */
-  window.show_multiple_currencies = {{ settings.currency_enable }};
-  window.shop_currency = "{{ shop.currency }}";
-  window.money_format = "{{shop.money}}";
-  
-  /* recently viewed plugin api start */
-  Shopify.Products.showRecentlyViewed({
-    howManyToShow:4,
-    howManyToStoreInMemory:10,
-    wrapperId: 'recently-viewed-products', 
-    templateId: 'recently-viewed-product-template', 
-    onComplete: function() {
-
-    if (window.currency_enable) {
-    /* this section ID to be your currency picker (Select) ID */
-      Currency.convertAll(window.shop_currency, jQuery('#currencies').val(), 'span.money', 'money_format');
-  }
-                                      }
-
-                                      });
-  /* recently viewed plugin api end */
-
-	Shopify.Products.recordRecentlyViewed();
-  
+<script type="lazyload_int">
   setTimeout(function () {
       $('.recently-viewed-product').parents('.recently-viewed-products').addClass('pb-50');
     },1000);

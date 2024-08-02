@@ -37,7 +37,7 @@
 {%- render 'section-style' -%}
 
 <!-- BANNER AREA START -->
-<div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="ltn__banner-area {% if section.settings.margin_top_minus_enable %}mt--90{% endif %}" data-section="bannerWithtimeSchedule" id="section-{{ section.id }}">
+<div class="ltn__banner-area {% if section.settings.margin_top_minus_enable %}mt--90{% endif %}" data-section="bannerWithtimeSchedule" id="section-{{ section.id }}">
   <div class="container">
     <div class="row ltn__custom-gutter justify-content-center">
       {%- for block in section.blocks -%}
@@ -115,9 +115,6 @@
 {% schema %}
   {
     "name": "Banner with Schedule",
-    "disabled_on": {
-      "groups": ["header", "footer"]
-    },
     "settings": [
         {
           "type": "checkbox",

@@ -1,0 +1,44 @@
+<script data-src="https://cdn.shopify.com/extensions/8e203556-61b8-4058-b004-1db3a13d158d/0.24.0/assets/lb-upsell.js" type="lazyload_int"></script>
+<script data-src="https://cdn.shopify.com/extensions/eaa3bdde-51aa-4d08-8605-79c4c950b4b1/0.1.0/assets/pushowl-shopify.js" type="lazyload_int"></script>
+<script type="lazyload_int" data-src="https://cdn.shopify.com/extensions/def2d48f-4911-43ea-970b-29177d7e0de7/vimotia-shoppable-videos-ugc-10/assets/vimotia.js"></script>
+
+{% render 'swatch-king-variants-options-app' %}
+<!-- BEGIN app block: shopify://apps/triplewhale/blocks/triple_pixel_snippet/483d496b-3f1a-4609-aea7-8eee3b6b7a2a -->
+<link rel='preconnect dns-prefetch' href='https://api.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://conf.config-security.com/' crossorigin />
+<link rel='preconnect dns-prefetch' href='https://whale.camera/' crossorigin />
+<script type="lazyload_int">
+    /* >> TriplePixel :: start*/
+    window.TriplePixelData={TripleName:"bixc.myshopify.com",ver:"2.12",plat:"SHOPIFY",isHeadless:false},function(W,H,A,L,E,_,B,N){function O(U,T,P,H,R){void 0===R&&(R=!1),H=new XMLHttpRequest,P?(H.open("POST",U,!0),H.setRequestHeader("Content-Type","text/plain")):H.open("GET",U,!0),H.send(JSON.stringify(P||{})),H.onreadystatechange=function(){4===H.readyState&&200===H.status?(R=H.responseText,U.includes(".txt")?eval(R):P||(N[B]=R)):(299<H.status||H.status<200)&&T&&!R&&(R=!0,O(U,T-1,P))}}if(N=window,!N[H+"sn"]){N[H+"sn"]=1,L=function(){return Date.now().toString(36)+"_"+Math.random().toString(36)};try{A.setItem(H,1+(0|A.getItem(H)||0)),(E=JSON.parse(A.getItem(H+"U")||"[]")).push({u:location.href,r:document.referrer,t:Date.now(),id:L()}),A.setItem(H+"U",JSON.stringify(E))}catch(e){}var i,m,p;A.getItem('"!nC`')||(_=A,A=N,A[H]||(E=A[H]=function(t,e,a){return void 0===a&&(a=[]),"State"==t?E.s:(W=L(),(E._q=E._q||[]).push([W,t,e].concat(a)),W)},E.s="Installed",E._q=[],E.ch=W,B="configSecurityConfModel",N[B]=1,O("https://conf.config-security.com/model",5),i=L(),m=A[atob("c2NyZWVu")],_.setItem("di_pmt_wt",i),p={id:i,action:"profile",avatar:_.getItem("auth-security_rand_salt_"),time:m[atob("d2lkdGg=")]+":"+m[atob("aGVpZ2h0")],host:A.TriplePixelData.TripleName,plat:A.TriplePixelData.plat,url:window.location.href,ref:document.referrer,ver:A.TriplePixelData.ver},O("https://api.config-security.com/event",5,p),O("https://whale.camera/live/dot.txt",5)))}}("","TriplePixel",localStorage);
+    /* << TriplePixel :: end*/
+</script>
+<!-- END app app block -->
+<!-- Start of Judge.me Core -->
+<link rel="dns-prefetch" href="https://cdn.judge.me/">
+{{ shop.metafields.judgeme.settings | replace: '<script data-cfasync="false" type="text/javascript" async src="', '<script data-cfasync="false" type="lazyload_int" data-src="' | replace: 'type="text/css" media="nope!" onload="this.media=', '' | replace: "'all'", "" | replace: '" href="', 'data-href="' }}
+{% for count in (0..5) %}
+  {% assign metafield_key = 'html_miracle_' | append: count %}
+  {% assign current_metafield = shop.metafields.judgeme[metafield_key] %}
+  {% unless current_metafield %} {% break %} {% endunless %}
+  {{ current_metafield }}
+{% endfor %}
+
+
+<script data-cfasync='false' class='jdgm-script' type="lazyload_int">
+!function(e){window.jdgm=window.jdgm||{},jdgm.CDN_HOST="https://cdn.judge.me/",
+jdgm.docReady=function(d){(e.attachEvent?"complete"===e.readyState:"loading"!==e.readyState)?
+setTimeout(d,0):e.addEventListener("DOMContentLoaded",d)},jdgm.loadCSS=function(d,t,o,s){
+!o&&jdgm.loadCSS.requestedUrls.indexOf(d)>=0||(jdgm.loadCSS.requestedUrls.push(d),
+(s=e.createElement("link")).rel="stylesheet",s.class="jdgm-stylesheet",s.media="nope!",
+s.href=d,s.onload=function(){this.media="all",t&&setTimeout(t)},e.body.appendChild(s))},
+jdgm.loadCSS.requestedUrls=[],jdgm.loadJS=function(e,d){var t=new XMLHttpRequest;
+t.onreadystatechange=function(){4===t.readyState&&(Function(t.response)(),d&&d(t.response))},
+t.open("GET",e),t.send()},jdgm.docReady((function(){(window.jdgmLoadCSS||e.querySelectorAll(
+".jdgm-widget, .jdgm-all-reviews-page").length>0)&&(jdgmSettings.widget_load_with_code_splitting?
+parseFloat(jdgmSettings.widget_version)>=3?jdgm.loadCSS(jdgm.CDN_HOST+"widget_v3/base.css"):
+jdgm.loadCSS(jdgm.CDN_HOST+"widget/base.css"):jdgm.loadCSS(jdgm.CDN_HOST+"shopify_v2.css"),
+jdgm.loadJS(jdgm.CDN_HOST+"loader.js"))}))}(document);
+</script>
+
+<noscript><link rel="stylesheet" type="text/css" media="all" href="https://cdn.judge.me/shopify_v2.css"></noscript>
+<!-- End of Judge.me Core -->

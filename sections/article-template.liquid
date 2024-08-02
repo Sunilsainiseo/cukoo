@@ -1,7 +1,7 @@
 <div class="ltn__page-details-area ltn__blog-details-area mb-100" data-section="articleTemplate">
   <div class="container">
     <div class="row {% if section.settings.sidebar_handle == 'left_sidebar_handle' %}flex-row-reverse{% endif %}">
-      <div {% if settings.animation_enable %}data-aos="fade-up"{% endif %} class="{% if section.settings.sidebar_handle == 'without_sidebar' %}col-lg-12{% else %}col-lg-8{% endif %}">
+      <div class="{% if section.settings.sidebar_handle == 'without_sidebar' %}col-lg-12{% else %}col-lg-8{% endif %}">
         <div class="ltn__blog-details-wrap">
           <div class="ltn__page-details-inner ltn__blog-details-inner">
             {%- assign image =  article.image -%}

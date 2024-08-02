@@ -1,0 +1,118 @@
+<div class="sizechart_return">
+    <div class="popup_sizechart">
+        <a href="#open-popup-sizechart" id="open-popup-sizechart">Size Chart</a>
+        <img class="popup-sizechart-icon" src="{{ 'meter.png' | asset_url }}" alt="size-chart-icon">
+        <div id="popup-sizechart" class="popup-size-chart">
+            <div class="popup-size-chart-content">
+                {% if template contains 'product.coming-soon' or template contains 'product.lingerie-not-returnable' %}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="https://cdn.shopify.com/s/files/1/0091/2402/0279/files/Bra_1024x1024_2x_e803d3a5-be54-4e68-a227-4af67584ee07.webp?v=1684787639" alt="size-chart">        
+                {% else %}
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=" data-class="LazyLoad" data-src="https://cdn.shopify.com/s/files/1/0091/2402/0279/files/1920x900_480x480.svg?v=1684786204" alt="size-chart">        
+                {% endif %}
+                <a href="#close-popup-sizechart" id="close-popup-sizechart"><span aria-hidden="true">&times;</span></a>
+            </div>
+        </div>
+    </div>    
+    <div class="easy_return" onclick="clicktab()">
+        {% if template contains 'product.default-non-returnable' or template contains 'product.lingerie-not-returnable' %}
+            <a href="#" class="easy_return_content">Non Returnable</a>
+        {% else %}
+            <a href="#" class="easy_return_content">7 Days Easy Return</a>
+        {% endif %}
+        <img class="easy_return_icon" src="{{ 'product-return.png' | asset_url }}" alt="easy_return_icon">    
+    </div>
+</div>
+<style>  
+    .sizechart_return {
+        display: flex;
+    }
+    .sizechart_return > div {
+        width: 50%;
+    }
+    img.easy_return_icon {
+        width: 25px;
+        height: 25px;
+    }
+    .easy_return {            
+        width: fit-content;            
+        color: #c01444;
+    }
+    .easy_return a {
+        margin-right: 5px;
+    }    
+    img.popup-sizechart-icon {
+        width: 25px;
+        height: 15px;
+    }
+    a#open-popup-sizechart {
+        color: #c01444;
+    }
+    .popup-size-chart {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+    }    
+    .popup-size-chart-content {
+        background-color: white;
+        padding: 20px;
+        {% unless template contains 'product.coming-soon' or template contains 'product.lingerie-not-returnable' %}
+        max-width: 600px;
+        {% endunless %}
+        margin: 100px auto;
+        position: relative;
+    }    
+    .popup-size-chart #close-popup-sizechart {            
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+    }
+    .popup-size-chart #close-popup-sizechart span {
+        display: flex;
+        font-size: 30px;
+        background: #f6509c;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 !important;
+        line-height: normal;
+        font-weight: 500;
+        color: #fff;
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var popup = document.getElementById('popup-sizechart');
+        var popupClose = document.getElementById('close-popup-sizechart');    
+        function openPopup() {
+            popup.style.display = 'block';
+        }    
+        function closePopup() {
+            popup.style.display = 'none';
+        }
+        document.getElementById('open-popup-sizechart').addEventListener('click', openPopup);    
+        popupClose.addEventListener('click', closePopup);
+        window.addEventListener('click', function(event) {
+            if (event.target == popup) {
+                closePopup();
+            }
+        });
+    });                  
+</script>
+<script>
+    function clicktab() {
+        setTimeout(function(){
+            var tab2 = document.querySelector('.ltn__shop-details-tab-inner .ltn__shop-details-tab-menu .nav > a:last-child');
+            tab2.click();
+            const myDiv = document.querySelector('.ltn__shop-details-tab-inner');
+            myDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        },1000);
+    }
+</script>

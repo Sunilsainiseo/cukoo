@@ -1,3 +1,4 @@
+{%- if section.settings.topbar_notification_enable -%}
 <style>
   /* Top Bar Noticfication */
   {% if section.settings.notification_bg_image %}
@@ -64,7 +65,7 @@
           <p><a class="notification-button" href="{{ section.settings.notification_button_url }}">{{ section.settings.notification_button_name }}</a></p>
           {% endif %}
         </div>
-        <button class="notification-close-btn"><i class="icon-cancel for-search-close"></i></button>
+        <button class="notification-close-btn" aria-label="Close notification"><i class="icon-cancel for-search-close"></i></button>
       </div>
     </div>
   </div>
@@ -77,18 +78,25 @@
 {{ announcement_bar }}
 {%- endif -%}
 
-<script defer="defer">
+<script type="lazyload_int">
   var nToggle = $('.notification-close-btn');
   nToggle.on('click', function(){
     $('.announcement-bar').slideToggle();
   })
 </script>
+{%- endif -%}
 
 
 {% schema %}
   {
     "name": "Announcement Bar",
     "settings": [
+		{
+          "type": "checkbox",
+          "id": "topbar_notification_enable",
+          "label": "Show Announcement Bar",
+          "default": false
+        },
         {
           "type": "radio",
           "id": "topbar_notification",

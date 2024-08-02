@@ -38,7 +38,7 @@
                       <button type="submit" class="addtocartqv theme-default-button----  theme-btn-1 btn btn-effect-1">{{ settings.qcv_add_to_cart_text }}</button>
                     </div>
                   </div>
-                  <script>
+                  <script type="lazyload_int">
                     jQuery('.addtocartqv').click(function(e) {
                       e.preventDefault();
                       Shopify.addItemFromFormStart('add-item-qv', jQuery(this).attr('id'));
@@ -64,7 +64,7 @@
   <div class="button_wait">{{ settings.qcv_cart_wait_text }}</div>
 </div>
 
-<script async="async">  
+<script type="lazyload_int">  
   var mainImage = '';
   jQuery(function ($) {
 

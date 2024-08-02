@@ -1,11 +1,5 @@
 {%- if section.settings.breadcrumb_banner_enable -%}
-{%- if template == 'product' -%}
-  {%- if section.settings.breadcrumb_enable_product_page -%}
-  {%- render 'breadcrumb-banner' -%}
-  {%- endif -%}
-{% else %}
 {%- render 'breadcrumb-banner' -%}
-{%- endif -%}
 <style>
   /* Breadcurmb Banner */
   .breadcrumbs {
@@ -39,16 +33,6 @@
       text-align: center;
   }
   {% endif %}
-
-
-  {%- unless section.settings.breadcrumb_enable_product_page -%}
-  @media (min-width: 992px){
-    .ltn__shop-details-img-gallery {
-        top: 30px;
-    }
-  }
-  {%- endunless -%}
-  
   
   @media (max-width: 767px) {
     .breadcrumbs {
@@ -161,12 +145,6 @@
         "type": "checkbox",
         "id": "breadcrumb_banner_enable",
         "label": "Show Breadcrumb Banner",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "breadcrumb_enable_product_page",
-        "label": "Show Breadcrumb for Product Page",
         "default": true
       },
       {
